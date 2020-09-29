@@ -15,6 +15,7 @@ class MyApp extends StatelessWidget {
       ),
       home: Container(
         color: Colors.black,
+        alignment: Alignment.center,
       ),
     );
   }

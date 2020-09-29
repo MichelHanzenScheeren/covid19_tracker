@@ -13,7 +13,10 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: Container(),
+      home: Container(
+        color: Colors.black,
+        alignment: Alignment.center,
+      ),
     );
   }
 }

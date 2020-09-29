@@ -1,4 +1,4 @@
-class Sumary {
+class Summary {
   DateTime updatedDate;
   int cases;
   int todayCases;
@@ -10,7 +10,7 @@ class Sumary {
   int critical;
   int population;
 
-  Sumary.fromMap(Map map) {
+  Summary.fromMap(Map map) {
     updatedDate = DateTime.fromMillisecondsSinceEpoch(map["updated"]);
     cases = map["cases"];
     todayCases = map["todayCases"];

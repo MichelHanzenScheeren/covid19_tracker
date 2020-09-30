@@ -1,14 +1,6 @@
-import 'package:covid19_tracker_in_flutter/models/summary.dart';
-import 'package:covid19_tracker_in_flutter/repositories/covid19_api.dart';
 import 'package:flutter/material.dart';
 
 void main() async {
-  final api = Covid19Api();
-  Map<String, dynamic> response = await api.worldSummary();
-  Summary summary = Summary.fromMap(response);
-  print(summary.active);
-  print(summary.todayCases);
-  print(summary.updatedDate);
   runApp(MyApp());
 }
 

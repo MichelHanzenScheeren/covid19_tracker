@@ -9,19 +9,33 @@ class Covid19Api {
     return await _doRequest(request);
   }
 
-  Future<Map<String, dynamic>> _doRequest(String request) async {
-    return await Dio()
-        .get(request)
-        .then(_validateResponse)
-        .catchError(_onError);
+  Future<List<Map<String, dynamic>>> continentsSummary() async {
+    String request = BASE_URL + '/continents';
+    List response = await _doRequest(request);
+    return List.generate(
+      response.length,
+      (i) => Map<String, dynamic>.from(response[i]),
+    );
   }
 
-  Map<String, dynamic> _validateResponse(Response response) {
+  Future<dynamic> _doRequest(String request) async {
+    try {
+      final Response response = await Dio().get(request);
+      return _validateResponse(response);
+    } catch (error) {
+      _onError(error);
+      return null;
+    }
+  }
+
+  dynamic _validateResponse(Response response) {
     if (response == null || response.statusCode != 200) return null;
     return response.data;
   }
 
   void _onError(error) {
-    throw ApiException(dioErrorType: error.type);
+    if (error.runtimeType == DioError)
+      throw ApiException(dioErrorType: error.type);
+    throw ApiException();
   }
 }

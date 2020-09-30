@@ -1,6 +1,5 @@
 import 'package:covid19_tracker_in_flutter/repositories/api_exception.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
+import 'package:dio/dio.dart';
 
 const BASE_URL = 'https://disease.sh/v3/covid-19';
 
@@ -11,19 +10,18 @@ class Covid19Api {
   }
 
   Future<Map<String, dynamic>> _doRequest(String request) async {
-    return await http
+    return await Dio()
         .get(request)
-        .then(_decodeResponse)
-        .timeout(Duration(seconds: 8))
+        .then(_validateResponse)
         .catchError(_onError);
   }
 
-  Map<String, dynamic> _decodeResponse(http.Response response) {
+  Map<String, dynamic> _validateResponse(Response response) {
     if (response == null || response.statusCode != 200) return null;
-    return json.decode(response.body);
+    return response.data;
   }
 
   void _onError(error) {
-    throw ApiException();
+    throw ApiException(dioErrorType: error.type);
   }
 }

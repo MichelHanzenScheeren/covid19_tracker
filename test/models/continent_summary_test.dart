@@ -1,4 +1,5 @@
 import 'package:covid19_tracker_in_flutter/models/continent_summary.dart';
+import 'package:covid19_tracker_in_flutter/models/coordinate.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 const continentSumaryModel = {
@@ -31,6 +32,9 @@ main() {
   test('Validação da conversão da factory ContinentSummary.fromMap', () {
     final summary = ContinentSummary.fromMap(continentSumaryModel);
     expect(summary, isInstanceOf<ContinentSummary>());
+    expect(summary.coordinate, isInstanceOf<Coordinate>());
+    expect(summary.coordinate.latitude, isInstanceOf<double>());
+    expect(summary.coordinate.longitude, isInstanceOf<double>());
     expect(summary.cases, isInstanceOf<int>());
     expect(summary.active, isInstanceOf<int>());
     expect(summary.critical, isInstanceOf<int>());

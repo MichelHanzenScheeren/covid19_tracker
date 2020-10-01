@@ -2,8 +2,7 @@ import 'package:dio/dio.dart';
 
 enum ApiErrorType {
   INVALID_ARGUMENT,
-  CONNECT_TIMEOUT,
-  SEND_TIMEOUT,
+  NETWORK_ERROR,
   RECEIVE_TIMEOUT,
   INVALID_RESPONSE,
   UNKNOWN,
@@ -28,11 +27,10 @@ class ApiException implements Exception {
   ApiErrorType _convertFromDioError(DioErrorType dioType) {
     switch (dioType) {
       case DioErrorType.CONNECT_TIMEOUT:
-        return ApiErrorType.CONNECT_TIMEOUT;
       case DioErrorType.SEND_TIMEOUT:
-        return ApiErrorType.SEND_TIMEOUT;
+        return ApiErrorType.NETWORK_ERROR;
       case DioErrorType.RECEIVE_TIMEOUT:
-        return ApiErrorType.SEND_TIMEOUT;
+        return ApiErrorType.RECEIVE_TIMEOUT;
       case DioErrorType.RESPONSE:
         return ApiErrorType.INVALID_RESPONSE;
       default:
@@ -44,8 +42,7 @@ class ApiException implements Exception {
     switch (_apiErrorType) {
       case ApiErrorType.INVALID_ARGUMENT:
         return 'Argumento Inválido.';
-      case ApiErrorType.CONNECT_TIMEOUT:
-      case ApiErrorType.SEND_TIMEOUT:
+      case ApiErrorType.NETWORK_ERROR:
         return 'Não foi possível conectar-se a rede.';
       case ApiErrorType.RECEIVE_TIMEOUT:
         return 'O Servidor demorou para responder.';

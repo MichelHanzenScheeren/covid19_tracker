@@ -3,7 +3,7 @@ class Coordinate {
   double longitude;
 
   Coordinate.fromMap(Map map) {
-    latitude = map["lat"];
-    longitude = map["long"];
+    latitude = map["lat"] + 0.0;
+    longitude = map["long"] + 0.0;
   }
 }

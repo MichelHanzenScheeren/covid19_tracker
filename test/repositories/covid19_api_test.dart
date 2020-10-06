@@ -41,5 +41,11 @@ main() async {
         expect(exec, throwsA(predicate((e) => e.getType() == type)));
       });
     });
+    test('Validação da função countriesSummary()', () async {
+      final response = await covid19Api.countriesSummary();
+      expect(response, isA<List<Map<String, dynamic>>>());
+      expect(response[0].keys.length, equals(23));
+      expect(response[0].keys.contains('country'), equals(true));
+    });
   });
 }

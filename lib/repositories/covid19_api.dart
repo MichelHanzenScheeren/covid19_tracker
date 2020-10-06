@@ -12,7 +12,11 @@ class Covid19Api {
   Future<List<Map<String, dynamic>>> continentsSummary() async {
     final String request = BASE_URL + '/continents';
     final List response = await _doRequest(request);
-    return List.generate(
+    return _generateList(response);
+  }
+
+  List<Map<String, dynamic>> _generateList(List response) {
+    return List<Map<String, dynamic>>.generate(
       response.length,
       (i) => Map<String, dynamic>.from(response[i]),
     );
@@ -27,6 +31,12 @@ class Covid19Api {
   _validateParameter(String parameter) {
     if (parameter == null || parameter == '')
       throw ApiException(apiErrorType: ApiErrorType.INVALID_ARGUMENT);
+  }
+
+  Future<List<Map<String, dynamic>>> countriesSummary() async {
+    final String request = BASE_URL + '/countries';
+    final List response = await _doRequest(request);
+    return _generateList(response);
   }
 
   Future<dynamic> _doRequest(String request) async {

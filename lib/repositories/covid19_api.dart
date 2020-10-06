@@ -62,6 +62,28 @@ class Covid19Api {
     return '';
   }
 
+  Future<Map<String, dynamic>> worldHistorical(String numberOfDays) async {
+    _validateNumberOfDays(numberOfDays);
+    final String request = '$BASE_URL/historical/all?lastdays=$numberOfDays';
+    return await _doRequest(request);
+  }
+
+  void _validateNumberOfDays(String days) {
+    if (days == 'all') return;
+    if (days == null || int.tryParse(days) == null || int.parse(days) <= 0)
+      throw ApiException(apiErrorType: ApiErrorType.INVALID_ARGUMENT);
+  }
+
+  Future<Map<String, dynamic>> countryHistorical(
+    String country,
+    String numberOfDays,
+  ) async {
+    _validateStringParameter(country);
+    _validateNumberOfDays(numberOfDays);
+    final request = '$BASE_URL/historical/$country?lastdays=$numberOfDays';
+    return await _doRequest(request);
+  }
+
   Future<dynamic> _doRequest(String request) async {
     try {
       final Response response = await Dio().get(request);

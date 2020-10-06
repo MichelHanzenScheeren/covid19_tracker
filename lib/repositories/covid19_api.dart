@@ -1,6 +1,8 @@
 import 'package:covid19_tracker_in_flutter/repositories/api_exception.dart';
 import 'package:dio/dio.dart';
 
+enum Period { today, yesterday, twoDaysAgo }
+
 const BASE_URL = 'https://disease.sh/v3/covid-19';
 
 class Covid19Api {
@@ -23,12 +25,12 @@ class Covid19Api {
   }
 
   Future<Map<String, dynamic>> findContinentSummary(String continent) async {
-    _validateParameter(continent);
+    _validateStringParameter(continent);
     final String request = '$BASE_URL/continents/$continent';
     return await _doRequest(request);
   }
 
-  _validateParameter(String parameter) {
+  _validateStringParameter(String parameter) {
     if (parameter == null || parameter == '')
       throw ApiException(apiErrorType: ApiErrorType.INVALID_ARGUMENT);
   }
@@ -37,6 +39,27 @@ class Covid19Api {
     final String request = BASE_URL + '/countries';
     final List response = await _doRequest(request);
     return _generateList(response);
+  }
+
+  Future<Map<String, dynamic>> findCountrySummary(
+    String country,
+    Period period,
+  ) async {
+    _validateStringParameter(country);
+    _validatePeriodParameter(period);
+    final String request = '$BASE_URL/countries/$country${getPeriod(period)}';
+    return await _doRequest(request);
+  }
+
+  _validatePeriodParameter(Period period) {
+    if (period == null)
+      throw ApiException(apiErrorType: ApiErrorType.INVALID_ARGUMENT);
+  }
+
+  String getPeriod(Period period) {
+    if (period == Period.yesterday) return '?yesterday=true';
+    if (period == Period.twoDaysAgo) return '?twoDaysAgo=true';
+    return '';
   }
 
   Future<dynamic> _doRequest(String request) async {

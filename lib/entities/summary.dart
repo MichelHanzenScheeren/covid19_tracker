@@ -10,8 +10,8 @@ class Summary {
   int critical;
   int population;
 
-  Summary.fromMap(Map map) {
-    updatedDate = DateTime.fromMillisecondsSinceEpoch(map["updated"]);
+  Summary(Map<String, dynamic> map) {
+    updatedDate = map["updated"];
     cases = map["cases"];
     todayCases = map["todayCases"];
     deaths = map["deaths"];

@@ -1,8 +1,9 @@
+import 'package:covid19_tracker_in_flutter/data/models/continent_summary_model.dart';
 import 'package:covid19_tracker_in_flutter/entities/continent_summary.dart';
 import 'package:covid19_tracker_in_flutter/entities/coordinate.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-const continentSumaryModel = {
+const model = {
   "updated": 1601507380903,
   "cases": 31235,
   "todayCases": 16,
@@ -30,7 +31,8 @@ const continentSumaryModel = {
 
 main() {
   test('Validação da conversão da factory ContinentSummary.fromMap', () {
-    final summary = ContinentSummary.fromMap(continentSumaryModel);
+    final summary = ContinentSummaryModel.fromMap(model);
+    expect(summary, isInstanceOf<ContinentSummaryModel>());
     expect(summary, isInstanceOf<ContinentSummary>());
     expect(summary.coordinate, isInstanceOf<Coordinate>());
     expect(summary.coordinate.latitude, isInstanceOf<double>());

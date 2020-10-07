@@ -9,12 +9,12 @@ class CountrySummary extends Summary {
   String continent;
   Coordinate coordinate;
 
-  CountrySummary.fromMap(Map map) : super.fromMap(map) {
+  CountrySummary(Map<String, dynamic> map) : super(map) {
     country = map['country'];
-    countryAbbreviation1 = map['countryInfo']['iso2'];
-    countryAbbreviation2 = map['countryInfo']['iso3'];
-    imageUrl = map['countryInfo']['flag'];
+    countryAbbreviation1 = map['countryAbbreviation1'];
+    countryAbbreviation2 = map['countryAbbreviation2'];
+    imageUrl = map['imageUrl'];
     continent = map['continent'];
-    coordinate = Coordinate.fromMap(map['countryInfo']);
+    coordinate = Coordinate(map);
   }
 }

@@ -1,4 +1,4 @@
-import 'package:covid19_tracker_in_flutter/repositories/api_exception.dart';
+import 'package:covid19_tracker_in_flutter/data/repositories/api_exception.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
 

@@ -1,4 +1,4 @@
-import 'package:covid19_tracker_in_flutter/models/historical_item.dart';
+import 'package:covid19_tracker_in_flutter/entities/historical_item.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 const String stringDate = '10/4/20';

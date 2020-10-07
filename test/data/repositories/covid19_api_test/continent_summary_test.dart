@@ -1,4 +1,4 @@
-import 'package:covid19_tracker_in_flutter/repositories/covid19_api.dart';
+import 'package:covid19_tracker_in_flutter/data/repositories/covid19_api.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

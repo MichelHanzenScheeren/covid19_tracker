@@ -1,5 +1,5 @@
-import 'package:covid19_tracker_in_flutter/models/coordinate.dart';
-import 'package:covid19_tracker_in_flutter/models/summary.dart';
+import 'package:covid19_tracker_in_flutter/entities/coordinate.dart';
+import 'package:covid19_tracker_in_flutter/entities/summary.dart';
 
 class CountrySummary extends Summary {
   String country;

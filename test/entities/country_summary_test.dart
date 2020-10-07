@@ -1,5 +1,5 @@
-import 'package:covid19_tracker_in_flutter/models/coordinate.dart';
-import 'package:covid19_tracker_in_flutter/models/country_summary.dart';
+import 'package:covid19_tracker_in_flutter/entities/coordinate.dart';
+import 'package:covid19_tracker_in_flutter/entities/country_summary.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 const countrySumaryModel = {

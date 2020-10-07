@@ -3,7 +3,7 @@ class Coordinate {
   double longitude;
 
   Coordinate(Map<String, dynamic> map) {
-    latitude = map["lat"];
-    longitude = map["long"];
+    latitude = map["latitude"];
+    longitude = map["longitude"];
   }
 }

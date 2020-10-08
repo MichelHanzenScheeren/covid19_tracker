@@ -21,9 +21,9 @@ const model2 = {
 
 void main() {
   group(
-    'Validação de Historical.fromMap(Map) nos 2 casos possíveis de retorno',
+    'Validação de HistoricalModel.fromMap(Map) nos 2 casos possíveis de retorno',
     () {
-      test('Validação de Historical.fromMap(Map) model1', () {
+      test('Validação de HistoricalModel.fromMap(Map) model1', () {
         HistoricalModel historical1 = HistoricalModel.fromMap(model1);
         expect(historical1, isInstanceOf<HistoricalModel>());
         expect(historical1, isInstanceOf<Historical>());
@@ -34,7 +34,7 @@ void main() {
         expect(historical1.deaths.length, equals(2));
         expect(historical1.recovered.length, equals(2));
       });
-      test('Validação da Historical.fromMap(Map) model2', () {
+      test('Validação da HistoricalModel.fromMap(Map) model2', () {
         HistoricalModel historical2 = HistoricalModel.fromMap(model2);
         expect(historical2, isInstanceOf<HistoricalModel>());
         expect(historical2, isInstanceOf<Historical>());

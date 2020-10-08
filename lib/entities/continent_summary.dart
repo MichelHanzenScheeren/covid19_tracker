@@ -8,7 +8,7 @@ class ContinentSummary extends Summary {
 
   ContinentSummary(Map<String, dynamic> map) : super(map) {
     coordinate = Coordinate(map);
-    continent = map["continent"];
-    countries = map["countries"];
+    continent = map['continent'];
+    countries = map['countries'];
   }
 }

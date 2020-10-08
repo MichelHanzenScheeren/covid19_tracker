@@ -5,10 +5,10 @@ class ContinentSummaryModel extends ContinentSummary {
 
   factory ContinentSummaryModel.fromMap(Map<String, dynamic> map) {
     Map<String, dynamic> padronized = Map.from(map);
-    padronized['updated'] = DateTime.fromMillisecondsSinceEpoch(map["updated"]);
-    padronized["latitude"] = map['continentInfo']['lat'] + 0.0;
-    padronized["longitude"] = map['continentInfo']['long'] + 0.0;
-    padronized['countries'] = List<String>.from(map["countries"]);
+    padronized['updated'] = DateTime.fromMillisecondsSinceEpoch(map['updated']);
+    padronized['latitude'] = map['continentInfo']['lat'] + 0.0;
+    padronized['longitude'] = map['continentInfo']['long'] + 0.0;
+    padronized['countries'] = List<String>.from(map['countries']);
     return ContinentSummaryModel._(padronized);
   }
 }

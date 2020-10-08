@@ -5,7 +5,7 @@ class SummaryModel extends Summary {
 
   factory SummaryModel.fromMap(Map<String, dynamic> map) {
     Map<String, dynamic> padronized = Map.from(map);
-    padronized["updated"] = DateTime.fromMillisecondsSinceEpoch(map["updated"]);
+    padronized['updated'] = DateTime.fromMillisecondsSinceEpoch(map['updated']);
     return SummaryModel._(padronized);
   }
 }

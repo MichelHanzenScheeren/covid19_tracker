@@ -30,7 +30,7 @@ const model = {
 };
 
 main() {
-  test('Validação da conversão da factory ContinentSummary.fromMap', () {
+  test('Validação da conversão da factory ContinentSummaryModel.fromMap', () {
     final summary = ContinentSummaryModel.fromMap(model);
     expect(summary, isInstanceOf<ContinentSummaryModel>());
     expect(summary, isInstanceOf<ContinentSummary>());

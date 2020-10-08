@@ -37,7 +37,7 @@ const model = {
 };
 
 main() {
-  test('Validação da conversão da factory CountrySummary.fromMap', () {
+  test('Validação da conversão da factory CountrySummaryModel.fromMap', () {
     final summary = CountrySummaryModel.fromMap(model);
     expect(summary, isInstanceOf<CountrySummaryModel>());
     expect(summary, isInstanceOf<CountrySummary>());

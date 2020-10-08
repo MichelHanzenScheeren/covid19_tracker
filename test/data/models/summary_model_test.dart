@@ -27,7 +27,7 @@ const model = {
 };
 
 main() {
-  test('Validação da conversão da factory Summary.fromMap', () {
+  test('Validação da conversão da factory SummaryModel.fromMap', () {
     final summaryModel = SummaryModel.fromMap(model);
     expect(summaryModel, isInstanceOf<SummaryModel>());
     expect(summaryModel, isInstanceOf<Summary>());

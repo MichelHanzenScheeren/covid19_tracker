@@ -5,18 +5,16 @@ class Historical {
   List<HistoricalItem> deaths;
   List<HistoricalItem> recovered;
 
-  Historical.fromMap(Map map) {
-    if (map.containsKey('timeline')) map = map['timeline'];
-    cases = _getItems(map['cases']);
-    deaths = _getItems(map['deaths']);
-    recovered = _getItems(map['recovered']);
+  Historical(Map<String, dynamic> map) {
+    cases = _getFrom(map['cases']);
+    deaths = _getFrom(map['deaths']);
+    recovered = _getFrom(map['recovered']);
   }
 
-  List<HistoricalItem> _getItems(Map<String, dynamic> mapOfItems) {
-    List<String> keys = mapOfItems.keys.toList();
+  List<HistoricalItem> _getFrom(List<Map<String, dynamic>> items) {
     return List<HistoricalItem>.generate(
-      keys.length,
-      (index) => HistoricalItem(keys[index], mapOfItems[keys[index]]),
+      items.length,
+      (index) => HistoricalItem(items[index]),
     );
   }
 }

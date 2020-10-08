@@ -3,13 +3,12 @@ import 'package:covid19_tracker_in_flutter/data/models/continent_summary_model.d
 import 'package:covid19_tracker_in_flutter/data/models/country_summary_model.dart';
 import 'package:covid19_tracker_in_flutter/data/models/historical_model.dart';
 import 'package:covid19_tracker_in_flutter/data/models/summary_model.dart';
+import 'package:covid19_tracker_in_flutter/domain/contracts/covid19_api_contract.dart';
 import 'package:dio/dio.dart';
-
-enum Period { today, yesterday, twoDaysAgo }
 
 const BASE_URL = 'https://disease.sh/v3/covid-19';
 
-class Covid19Api {
+class Covid19Api implements Covid19ApiContract {
   Future<SummaryModel> worldSummary() async {
     final String request = BASE_URL + '/all';
     return SummaryModel.fromMap(await _doRequest(request));

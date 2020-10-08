@@ -1,6 +1,7 @@
 import 'package:covid19_tracker_in_flutter/data/errors/covid19_api_error.dart';
 import 'package:covid19_tracker_in_flutter/data/models/country_summary_model.dart';
 import 'package:covid19_tracker_in_flutter/data/repositories/covid19_api.dart';
+import 'package:covid19_tracker_in_flutter/domain/contracts/covid19_api_contract.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

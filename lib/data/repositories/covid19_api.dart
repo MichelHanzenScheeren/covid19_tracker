@@ -1,8 +1,8 @@
+import 'package:covid19_tracker_in_flutter/data/errors/covid19_api_error.dart';
 import 'package:covid19_tracker_in_flutter/data/models/continent_summary_model.dart';
 import 'package:covid19_tracker_in_flutter/data/models/country_summary_model.dart';
 import 'package:covid19_tracker_in_flutter/data/models/historical_model.dart';
 import 'package:covid19_tracker_in_flutter/data/models/summary_model.dart';
-import 'package:covid19_tracker_in_flutter/data/repositories/api_exception.dart';
 import 'package:dio/dio.dart';
 
 enum Period { today, yesterday, twoDaysAgo }
@@ -32,7 +32,7 @@ class Covid19Api {
 
   _validateStringParameter(String parameter) {
     if (parameter == null || parameter == '')
-      throw ApiException(apiErrorType: ApiErrorType.INVALID_ARGUMENT);
+      throw Covid19ApiError(apiErrorType: ApiErrorType.INVALID_ARGUMENT);
   }
 
   Future<List<CountrySummaryModel>> countriesSummary() async {
@@ -56,7 +56,7 @@ class Covid19Api {
 
   _validatePeriodParameter(Period period) {
     if (period == null)
-      throw ApiException(apiErrorType: ApiErrorType.INVALID_ARGUMENT);
+      throw Covid19ApiError(apiErrorType: ApiErrorType.INVALID_ARGUMENT);
   }
 
   String getPeriod(Period period) {
@@ -74,7 +74,7 @@ class Covid19Api {
   void _validateNumberOfDays(String days) {
     if (days == 'all') return;
     if (days == null || int.tryParse(days) == null || int.parse(days) <= 0)
-      throw ApiException(apiErrorType: ApiErrorType.INVALID_ARGUMENT);
+      throw Covid19ApiError(apiErrorType: ApiErrorType.INVALID_ARGUMENT);
   }
 
   Future<HistoricalModel> countryHistorical(
@@ -98,13 +98,14 @@ class Covid19Api {
   }
 
   dynamic _validateResponse(Response response) {
-    if (response == null || response.statusCode != 200) return null;
+    if (response == null || response.statusCode != 200)
+      throw Covid19ApiError(apiErrorType: ApiErrorType.INVALID_RESPONSE);
     return response.data;
   }
 
   void _onError(error) {
     if (error.runtimeType == DioError)
-      throw ApiException(dioErrorType: error.type);
-    throw ApiException();
+      throw Covid19ApiError(dioErrorType: error.type);
+    throw Covid19ApiError();
   }
 }

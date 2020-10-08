@@ -1,5 +1,5 @@
+import 'package:covid19_tracker_in_flutter/data/errors/covid19_api_error.dart';
 import 'package:covid19_tracker_in_flutter/data/models/country_summary_model.dart';
-import 'package:covid19_tracker_in_flutter/data/repositories/api_exception.dart';
 import 'package:covid19_tracker_in_flutter/data/repositories/covid19_api.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -34,7 +34,7 @@ void main() {
           await covid19Api.findCountrySummary(null, Period.yesterday);
         };
         final type = ApiErrorType.INVALID_ARGUMENT;
-        expect(exec, throwsA(isInstanceOf<ApiException>()));
+        expect(exec, throwsA(isInstanceOf<Covid19ApiError>()));
         expect(exec, throwsA(predicate((e) => e.getType() == type)));
       });
       test('Exec country vazio findCountrySummary', () async {
@@ -42,7 +42,7 @@ void main() {
           await covid19Api.findCountrySummary('', Period.yesterday);
         };
         final type = ApiErrorType.INVALID_ARGUMENT;
-        expect(exec, throwsA(isInstanceOf<ApiException>()));
+        expect(exec, throwsA(isInstanceOf<Covid19ApiError>()));
         expect(exec, throwsA(predicate((e) => e.getType() == type)));
       });
       test('Exec Period null findCountrySummary', () async {
@@ -50,7 +50,7 @@ void main() {
           await covid19Api.findCountrySummary('Brazil', null);
         };
         final type = ApiErrorType.INVALID_ARGUMENT;
-        expect(exec, throwsA(isInstanceOf<ApiException>()));
+        expect(exec, throwsA(isInstanceOf<Covid19ApiError>()));
         expect(exec, throwsA(predicate((e) => e.getType() == type)));
       });
       test('Exec país inválido findCountrySummary', () async {
@@ -58,7 +58,7 @@ void main() {
           await covid19Api.findCountrySummary('a', Period.today);
         };
         final type = ApiErrorType.INVALID_RESPONSE;
-        expect(exec, throwsA(isInstanceOf<ApiException>()));
+        expect(exec, throwsA(isInstanceOf<Covid19ApiError>()));
         expect(exec, throwsA(predicate((e) => e.getType() == type)));
       });
     },

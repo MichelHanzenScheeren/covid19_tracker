@@ -8,11 +8,11 @@ enum ApiErrorType {
   UNKNOWN,
 }
 
-class ApiException implements Exception {
+class Covid19ApiError implements Exception {
   String _message;
   ApiErrorType _apiErrorType;
 
-  ApiException({DioErrorType dioErrorType, ApiErrorType apiErrorType}) {
+  Covid19ApiError({DioErrorType dioErrorType, ApiErrorType apiErrorType}) {
     _apiErrorType = _getApiErrorType(dioErrorType, apiErrorType);
     _message = _getMessage();
   }

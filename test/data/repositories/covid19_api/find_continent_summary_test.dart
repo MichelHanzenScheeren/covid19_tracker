@@ -1,5 +1,5 @@
+import 'package:covid19_tracker_in_flutter/data/errors/covid19_api_error.dart';
 import 'package:covid19_tracker_in_flutter/data/models/continent_summary_model.dart';
-import 'package:covid19_tracker_in_flutter/data/repositories/api_exception.dart';
 import 'package:covid19_tracker_in_flutter/data/repositories/covid19_api.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -15,19 +15,19 @@ void main() {
       test('Exec parâmetro null findContinentSummary', () async {
         final exec = () async => await covid19Api.findContinentSummary(null);
         final type = ApiErrorType.INVALID_ARGUMENT;
-        expect(exec, throwsA(isInstanceOf<ApiException>()));
+        expect(exec, throwsA(isInstanceOf<Covid19ApiError>()));
         expect(exec, throwsA(predicate((e) => e.getType() == type)));
       });
       test('Exec parâmetro vazio findContinentSummary', () async {
         final exec = () async => await covid19Api.findContinentSummary('');
         final type = ApiErrorType.INVALID_ARGUMENT;
-        expect(exec, throwsA(isInstanceOf<ApiException>()));
+        expect(exec, throwsA(isInstanceOf<Covid19ApiError>()));
         expect(exec, throwsA(predicate((e) => e.getType() == type)));
       });
       test('Exec continente inválido findContinentSummary', () async {
         final exec = () async => await covid19Api.findContinentSummary('a');
         final type = ApiErrorType.INVALID_RESPONSE;
-        expect(exec, throwsA(isInstanceOf<ApiException>()));
+        expect(exec, throwsA(isInstanceOf<Covid19ApiError>()));
         expect(exec, throwsA(predicate((e) => e.getType() == type)));
       });
     },

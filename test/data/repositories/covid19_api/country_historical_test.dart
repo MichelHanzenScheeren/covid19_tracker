@@ -1,5 +1,5 @@
+import 'package:covid19_tracker_in_flutter/data/errors/covid19_api_error.dart';
 import 'package:covid19_tracker_in_flutter/data/models/historical_model.dart';
-import 'package:covid19_tracker_in_flutter/data/repositories/api_exception.dart';
 import 'package:covid19_tracker_in_flutter/data/repositories/covid19_api.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -19,13 +19,13 @@ void main() {
       test('Exec parâmetros "null, 30" countryHistorical(String)', () async {
         final exec = () async => await covid19Api.countryHistorical(null, '30');
         final type = ApiErrorType.INVALID_ARGUMENT;
-        expect(exec, throwsA(isInstanceOf<ApiException>()));
+        expect(exec, throwsA(isInstanceOf<Covid19ApiError>()));
         expect(exec, throwsA(predicate((e) => e.getType() == type)));
       });
       test('Exec parâmetros "", "30" countryHistorical(String)', () async {
         final exec = () async => await covid19Api.countryHistorical('', '30');
         final type = ApiErrorType.INVALID_ARGUMENT;
-        expect(exec, throwsA(isInstanceOf<ApiException>()));
+        expect(exec, throwsA(isInstanceOf<Covid19ApiError>()));
         expect(exec, throwsA(predicate((e) => e.getType() == type)));
       });
       test('Exec parâmetros "Brazil, null" countryHistorical(String)',
@@ -34,7 +34,7 @@ void main() {
           await covid19Api.countryHistorical('Brazil', null);
         };
         final type = ApiErrorType.INVALID_ARGUMENT;
-        expect(exec, throwsA(isInstanceOf<ApiException>()));
+        expect(exec, throwsA(isInstanceOf<Covid19ApiError>()));
         expect(exec, throwsA(predicate((e) => e.getType() == type)));
       });
       test('Exec parâmetros "Brazil, b" countryHistorical(String)', () async {
@@ -42,7 +42,7 @@ void main() {
           await covid19Api.countryHistorical('Brazil', "b");
         };
         final type = ApiErrorType.INVALID_ARGUMENT;
-        expect(exec, throwsA(isInstanceOf<ApiException>()));
+        expect(exec, throwsA(isInstanceOf<Covid19ApiError>()));
         expect(exec, throwsA(predicate((e) => e.getType() == type)));
       });
       test('Exec país inválido " countryHistorical(String)', () async {
@@ -50,7 +50,7 @@ void main() {
           await covid19Api.countryHistorical('B', "30");
         };
         final type = ApiErrorType.INVALID_RESPONSE;
-        expect(exec, throwsA(isInstanceOf<ApiException>()));
+        expect(exec, throwsA(isInstanceOf<Covid19ApiError>()));
         expect(exec, throwsA(predicate((e) => e.getType() == type)));
       });
     },

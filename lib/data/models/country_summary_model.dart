@@ -1,4 +1,4 @@
-import 'package:covid19_tracker_in_flutter/entities/country_summary.dart';
+import 'package:covid19_tracker_in_flutter/domain/entities/country_summary.dart';
 
 class CountrySummaryModel extends CountrySummary {
   CountrySummaryModel._(Map<String, dynamic> map) : super(map);

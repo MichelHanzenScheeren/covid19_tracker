@@ -1,4 +1,4 @@
-import 'package:covid19_tracker_in_flutter/entities/continent_summary.dart';
+import 'package:covid19_tracker_in_flutter/domain/entities/continent_summary.dart';
 
 class ContinentSummaryModel extends ContinentSummary {
   ContinentSummaryModel._(Map<String, dynamic> map) : super(map);

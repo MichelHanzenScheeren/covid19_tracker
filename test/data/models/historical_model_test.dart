@@ -1,6 +1,6 @@
 import 'package:covid19_tracker_in_flutter/data/models/historical_model.dart';
-import 'package:covid19_tracker_in_flutter/entities/historical.dart';
-import 'package:covid19_tracker_in_flutter/entities/historical_item.dart';
+import 'package:covid19_tracker_in_flutter/domain/entities/historical.dart';
+import 'package:covid19_tracker_in_flutter/domain/entities/historical_item.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 const model1 = {

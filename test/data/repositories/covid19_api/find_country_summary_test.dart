@@ -1,3 +1,4 @@
+import 'package:covid19_tracker_in_flutter/data/models/country_summary_model.dart';
 import 'package:covid19_tracker_in_flutter/data/repositories/api_exception.dart';
 import 'package:covid19_tracker_in_flutter/data/repositories/covid19_api.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -12,27 +13,21 @@ void main() {
           'Brazil',
           Period.today,
         );
-        expect(response, isA<Map<String, dynamic>>());
-        expect(response.keys.length, equals(23));
-        expect(response['country'], equals('Brazil'));
+        expect(response, isInstanceOf<CountrySummaryModel>());
       });
       test('Exec padrão yesterday findCountrySummary', () async {
         final response = await covid19Api.findCountrySummary(
           'Brazil',
           Period.yesterday,
         );
-        expect(response, isA<Map<String, dynamic>>());
-        expect(response.keys.length, equals(23));
-        expect(response['country'], equals('Brazil'));
+        expect(response, isInstanceOf<CountrySummaryModel>());
       });
       test('Exec padrão twoDaysAgo findCountrySummary', () async {
         final response = await covid19Api.findCountrySummary(
           'Brazil',
           Period.twoDaysAgo,
         );
-        expect(response, isA<Map<String, dynamic>>());
-        expect(response.keys.length, equals(23));
-        expect(response['country'], equals('Brazil'));
+        expect(response, isInstanceOf<CountrySummaryModel>());
       });
       test('Exec country null findCountrySummary', () async {
         final exec = () async {

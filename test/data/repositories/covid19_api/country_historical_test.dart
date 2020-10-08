@@ -1,3 +1,4 @@
+import 'package:covid19_tracker_in_flutter/data/models/historical_model.dart';
 import 'package:covid19_tracker_in_flutter/data/repositories/api_exception.dart';
 import 'package:covid19_tracker_in_flutter/data/repositories/covid19_api.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -9,25 +10,11 @@ void main() {
       final covid19Api = Covid19Api();
       test('Exec parâmetros "Brazil, all" countryHistorical(String)', () async {
         final response = await covid19Api.countryHistorical('Brazil', 'all');
-        expect(response, isA<Map<String, dynamic>>());
-        expect(response.keys.length, equals(3));
-        expect(response.keys.contains('country'), equals(true));
-        expect(response.keys.contains('province'), equals(true));
-        expect(response.keys.contains('timeline'), equals(true));
-        expect(response['timeline'].keys.contains('cases'), equals(true));
-        expect(response['timeline'].keys.contains('deaths'), equals(true));
-        expect(response['timeline'].keys.contains('recovered'), equals(true));
+        expect(response, isInstanceOf<HistoricalModel>());
       });
       test('Exec parâmetros "Brazil, 30" countryHistorical(String)', () async {
         final response = await covid19Api.countryHistorical('Brazil', '30');
-        expect(response, isA<Map<String, dynamic>>());
-        expect(response.keys.length, equals(3));
-        expect(response.keys.contains('country'), equals(true));
-        expect(response.keys.contains('province'), equals(true));
-        expect(response.keys.contains('timeline'), equals(true));
-        expect(response['timeline'].keys.contains('cases'), equals(true));
-        expect(response['timeline'].keys.contains('deaths'), equals(true));
-        expect(response['timeline'].keys.contains('recovered'), equals(true));
+        expect(response, isInstanceOf<HistoricalModel>());
       });
       test('Exec parâmetros "null, 30" countryHistorical(String)', () async {
         final exec = () async => await covid19Api.countryHistorical(null, '30');

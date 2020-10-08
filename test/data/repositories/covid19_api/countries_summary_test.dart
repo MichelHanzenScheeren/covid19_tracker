@@ -1,3 +1,4 @@
+import 'package:covid19_tracker_in_flutter/data/models/country_summary_model.dart';
 import 'package:covid19_tracker_in_flutter/data/repositories/covid19_api.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -7,9 +8,7 @@ void main() {
     () async {
       final covid19Api = Covid19Api();
       final response = await covid19Api.countriesSummary();
-      expect(response, isA<List<Map<String, dynamic>>>());
-      expect(response[0].keys.length, equals(23));
-      expect(response[0].keys.contains('country'), equals(true));
+      expect(response, isInstanceOf<List<CountrySummaryModel>>());
     },
   );
 }

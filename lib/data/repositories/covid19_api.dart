@@ -1,3 +1,7 @@
+import 'package:covid19_tracker_in_flutter/data/models/continent_summary_model.dart';
+import 'package:covid19_tracker_in_flutter/data/models/country_summary_model.dart';
+import 'package:covid19_tracker_in_flutter/data/models/historical_model.dart';
+import 'package:covid19_tracker_in_flutter/data/models/summary_model.dart';
 import 'package:covid19_tracker_in_flutter/data/repositories/api_exception.dart';
 import 'package:dio/dio.dart';
 
@@ -6,28 +10,24 @@ enum Period { today, yesterday, twoDaysAgo }
 const BASE_URL = 'https://disease.sh/v3/covid-19';
 
 class Covid19Api {
-  Future<Map<String, dynamic>> worldSummary() async {
+  Future<SummaryModel> worldSummary() async {
     final String request = BASE_URL + '/all';
-    return await _doRequest(request);
+    return SummaryModel.fromMap(await _doRequest(request));
   }
 
-  Future<List<Map<String, dynamic>>> continentsSummary() async {
+  Future<List<ContinentSummaryModel>> continentsSummary() async {
     final String request = BASE_URL + '/continents';
     final List response = await _doRequest(request);
-    return _generateList(response);
-  }
-
-  List<Map<String, dynamic>> _generateList(List response) {
-    return List<Map<String, dynamic>>.generate(
+    return List.generate(
       response.length,
-      (i) => Map<String, dynamic>.from(response[i]),
+      (index) => ContinentSummaryModel.fromMap(response[index]),
     );
   }
 
-  Future<Map<String, dynamic>> findContinentSummary(String continent) async {
+  Future<ContinentSummaryModel> findContinentSummary(String continent) async {
     _validateStringParameter(continent);
     final String request = '$BASE_URL/continents/$continent';
-    return await _doRequest(request);
+    return ContinentSummaryModel.fromMap(await _doRequest(request));
   }
 
   _validateStringParameter(String parameter) {
@@ -35,20 +35,23 @@ class Covid19Api {
       throw ApiException(apiErrorType: ApiErrorType.INVALID_ARGUMENT);
   }
 
-  Future<List<Map<String, dynamic>>> countriesSummary() async {
+  Future<List<CountrySummaryModel>> countriesSummary() async {
     final String request = BASE_URL + '/countries';
     final List response = await _doRequest(request);
-    return _generateList(response);
+    return List.generate(
+      response.length,
+      (index) => CountrySummaryModel.fromMap(response[index]),
+    );
   }
 
-  Future<Map<String, dynamic>> findCountrySummary(
+  Future<CountrySummaryModel> findCountrySummary(
     String country,
     Period period,
   ) async {
     _validateStringParameter(country);
     _validatePeriodParameter(period);
     final String request = '$BASE_URL/countries/$country${getPeriod(period)}';
-    return await _doRequest(request);
+    return CountrySummaryModel.fromMap(await _doRequest(request));
   }
 
   _validatePeriodParameter(Period period) {
@@ -62,10 +65,10 @@ class Covid19Api {
     return '';
   }
 
-  Future<Map<String, dynamic>> worldHistorical(String numberOfDays) async {
+  Future<HistoricalModel> worldHistorical(String numberOfDays) async {
     _validateNumberOfDays(numberOfDays);
     final String request = '$BASE_URL/historical/all?lastdays=$numberOfDays';
-    return await _doRequest(request);
+    return HistoricalModel.fromMap(await _doRequest(request));
   }
 
   void _validateNumberOfDays(String days) {
@@ -74,14 +77,14 @@ class Covid19Api {
       throw ApiException(apiErrorType: ApiErrorType.INVALID_ARGUMENT);
   }
 
-  Future<Map<String, dynamic>> countryHistorical(
+  Future<HistoricalModel> countryHistorical(
     String country,
     String numberOfDays,
   ) async {
     _validateStringParameter(country);
     _validateNumberOfDays(numberOfDays);
     final request = '$BASE_URL/historical/$country?lastdays=$numberOfDays';
-    return await _doRequest(request);
+    return HistoricalModel.fromMap(await _doRequest(request));
   }
 
   Future<dynamic> _doRequest(String request) async {

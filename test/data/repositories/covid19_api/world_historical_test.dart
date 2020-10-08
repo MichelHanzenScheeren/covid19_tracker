@@ -1,3 +1,4 @@
+import 'package:covid19_tracker_in_flutter/data/models/historical_model.dart';
 import 'package:covid19_tracker_in_flutter/data/repositories/api_exception.dart';
 import 'package:covid19_tracker_in_flutter/data/repositories/covid19_api.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -9,19 +10,11 @@ void main() {
       final covid19Api = Covid19Api();
       test('Exec padrão parâmetro "all" worldHistorical', () async {
         final response = await covid19Api.worldHistorical('all');
-        expect(response, isA<Map<String, dynamic>>());
-        expect(response.keys.length, equals(3));
-        expect(response.keys.contains('cases'), equals(true));
-        expect(response.keys.contains('deaths'), equals(true));
-        expect(response.keys.contains('recovered'), equals(true));
+        expect(response, isInstanceOf<HistoricalModel>());
       });
       test('Exec padrão parâmetro "30" worldHistorical', () async {
         final response = await covid19Api.worldHistorical('30');
-        expect(response, isA<Map<String, dynamic>>());
-        expect(response.keys.length, equals(3));
-        expect(response.keys.contains('cases'), equals(true));
-        expect(response.keys.contains('deaths'), equals(true));
-        expect(response.keys.contains('recovered'), equals(true));
+        expect(response, isInstanceOf<HistoricalModel>());
       });
       test('Exec numberOfDays null worldHistorical', () async {
         final exec = () async => await covid19Api.worldHistorical(null);

@@ -5,7 +5,7 @@ import 'package:covid19_tracker_in_flutter/domain/entities/summary.dart';
 
 enum Period { today, yesterday, twoDaysAgo }
 
-abstract class Covid19ApiContract {
+abstract class CovidContract {
   Future<Summary> worldSummary();
 
   Future<List<ContinentSummary>> continentsSummary();

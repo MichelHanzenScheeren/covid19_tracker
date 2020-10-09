@@ -1,13 +1,13 @@
-import 'package:covid19_tracker_in_flutter/domain/contracts/covid19_api_contract.dart';
+import 'package:covid19_tracker_in_flutter/domain/contracts/covid_contract.dart';
 import 'package:covid19_tracker_in_flutter/domain/entities/continent_summary.dart';
 import 'package:covid19_tracker_in_flutter/domain/entities/country_summary.dart';
 import 'package:covid19_tracker_in_flutter/domain/entities/historical.dart';
 import 'package:covid19_tracker_in_flutter/domain/entities/summary.dart';
 
-class Covid19APiUseCase {
-  Covid19ApiContract _contract;
+class CovidUseCase {
+  CovidContract _contract;
 
-  Covid19APiUseCase(Covid19ApiContract contract) {
+  CovidUseCase(CovidContract contract) {
     _contract = contract;
   }
 

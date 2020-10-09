@@ -1,17 +1,17 @@
-import 'package:covid19_tracker_in_flutter/data/errors/covid19_api_error.dart';
+import 'package:covid19_tracker_in_flutter/data/errors/covid_error.dart';
 import 'package:covid19_tracker_in_flutter/data/models/continent_summary_model.dart';
 import 'package:covid19_tracker_in_flutter/data/models/country_summary_model.dart';
 import 'package:covid19_tracker_in_flutter/data/models/historical_model.dart';
 import 'package:covid19_tracker_in_flutter/data/models/summary_model.dart';
 import 'package:covid19_tracker_in_flutter/data/services/request_service.dart';
-import 'package:covid19_tracker_in_flutter/domain/contracts/covid19_api_contract.dart';
+import 'package:covid19_tracker_in_flutter/domain/contracts/covid_contract.dart';
 
 const BASE_URL = 'https://disease.sh/v3/covid-19';
 
-class Covid19Api implements Covid19ApiContract {
+class CovidRepository implements CovidContract {
   RequestService _service;
 
-  Covid19Api(RequestService requestService) {
+  CovidRepository(RequestService requestService) {
     _service = requestService;
   }
 
@@ -37,7 +37,7 @@ class Covid19Api implements Covid19ApiContract {
 
   _validateStringParameter(String parameter) {
     if (parameter == null || parameter == '')
-      throw Covid19ApiError(apiErrorType: ApiErrorType.INVALID_ARGUMENT);
+      throw CovidError(apiErrorType: CovidErrorType.INVALID_ARGUMENT);
   }
 
   Future<List<CountrySummaryModel>> countriesSummary() async {
@@ -61,7 +61,7 @@ class Covid19Api implements Covid19ApiContract {
 
   _validatePeriodParameter(Period period) {
     if (period == null)
-      throw Covid19ApiError(apiErrorType: ApiErrorType.INVALID_ARGUMENT);
+      throw CovidError(apiErrorType: CovidErrorType.INVALID_ARGUMENT);
   }
 
   String getPeriod(Period period) {
@@ -79,7 +79,7 @@ class Covid19Api implements Covid19ApiContract {
   void _validateNumberOfDays(String days) {
     if (days == 'all') return;
     if (days == null || int.tryParse(days) == null || int.parse(days) <= 0)
-      throw Covid19ApiError(apiErrorType: ApiErrorType.INVALID_ARGUMENT);
+      throw CovidError(apiErrorType: CovidErrorType.INVALID_ARGUMENT);
   }
 
   Future<HistoricalModel> countryHistorical(

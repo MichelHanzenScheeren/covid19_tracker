@@ -1,6 +1,9 @@
+import 'package:covid19_tracker_in_flutter/dependencies_injection.dart';
 import 'package:flutter/material.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  DependenciesInjection.init();
   runApp(MyApp());
 }
 

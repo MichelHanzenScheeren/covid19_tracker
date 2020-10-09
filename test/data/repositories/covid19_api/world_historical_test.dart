@@ -1,13 +1,14 @@
 import 'package:covid19_tracker_in_flutter/data/errors/covid19_api_error.dart';
 import 'package:covid19_tracker_in_flutter/data/models/historical_model.dart';
 import 'package:covid19_tracker_in_flutter/data/repositories/covid19_api.dart';
+import 'package:covid19_tracker_in_flutter/data/services/request_service.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   group(
     'Validações gerais worldHistorical(String) classe Covid19Api',
     () {
-      final covid19Api = Covid19Api();
+      final covid19Api = Covid19Api(RequestService());
       test('Exec padrão parâmetro "all" worldHistorical', () async {
         final response = await covid19Api.worldHistorical('all');
         expect(response, isInstanceOf<HistoricalModel>());

@@ -1,4 +1,4 @@
-import 'package:covid19_tracker_in_flutter/data/errors/covid_error.dart';
+import 'package:covid19_tracker_in_flutter/data/errors/request_error.dart';
 import 'package:covid19_tracker_in_flutter/data/models/continent_summary_model.dart';
 import 'package:covid19_tracker_in_flutter/data/models/country_summary_model.dart';
 import 'package:covid19_tracker_in_flutter/data/models/historical_model.dart';
@@ -37,7 +37,7 @@ class CovidRepository implements CovidContract {
 
   _validateStringParameter(String parameter) {
     if (parameter == null || parameter == '')
-      throw CovidError(apiErrorType: CovidErrorType.INVALID_ARGUMENT);
+      throw RequestError(apiErrorType: RequestErrorType.INVALID_ARGUMENT);
   }
 
   Future<List<CountrySummaryModel>> countriesSummary() async {
@@ -61,7 +61,7 @@ class CovidRepository implements CovidContract {
 
   _validatePeriodParameter(Period period) {
     if (period == null)
-      throw CovidError(apiErrorType: CovidErrorType.INVALID_ARGUMENT);
+      throw RequestError(apiErrorType: RequestErrorType.INVALID_ARGUMENT);
   }
 
   String getPeriod(Period period) {
@@ -79,7 +79,7 @@ class CovidRepository implements CovidContract {
   void _validateNumberOfDays(String days) {
     if (days == 'all') return;
     if (days == null || int.tryParse(days) == null || int.parse(days) <= 0)
-      throw CovidError(apiErrorType: CovidErrorType.INVALID_ARGUMENT);
+      throw RequestError(apiErrorType: RequestErrorType.INVALID_ARGUMENT);
   }
 
   Future<HistoricalModel> countryHistorical(

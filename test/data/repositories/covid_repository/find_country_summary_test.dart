@@ -1,4 +1,4 @@
-import 'package:covid19_tracker_in_flutter/data/errors/covid_error.dart';
+import 'package:covid19_tracker_in_flutter/data/errors/request_error.dart';
 import 'package:covid19_tracker_in_flutter/data/models/country_summary_model.dart';
 import 'package:covid19_tracker_in_flutter/data/repositories/covid_repository.dart';
 import 'package:covid19_tracker_in_flutter/data/services/request_service.dart';
@@ -35,32 +35,32 @@ void main() {
         final exec = () async {
           await covid19Api.findCountrySummary(null, Period.yesterday);
         };
-        final type = CovidErrorType.INVALID_ARGUMENT;
-        expect(exec, throwsA(isInstanceOf<CovidError>()));
+        final type = RequestErrorType.INVALID_ARGUMENT;
+        expect(exec, throwsA(isInstanceOf<RequestError>()));
         expect(exec, throwsA(predicate((e) => e.getType() == type)));
       });
       test('Exec country vazio findCountrySummary', () async {
         final exec = () async {
           await covid19Api.findCountrySummary('', Period.yesterday);
         };
-        final type = CovidErrorType.INVALID_ARGUMENT;
-        expect(exec, throwsA(isInstanceOf<CovidError>()));
+        final type = RequestErrorType.INVALID_ARGUMENT;
+        expect(exec, throwsA(isInstanceOf<RequestError>()));
         expect(exec, throwsA(predicate((e) => e.getType() == type)));
       });
       test('Exec Period null findCountrySummary', () async {
         final exec = () async {
           await covid19Api.findCountrySummary('Brazil', null);
         };
-        final type = CovidErrorType.INVALID_ARGUMENT;
-        expect(exec, throwsA(isInstanceOf<CovidError>()));
+        final type = RequestErrorType.INVALID_ARGUMENT;
+        expect(exec, throwsA(isInstanceOf<RequestError>()));
         expect(exec, throwsA(predicate((e) => e.getType() == type)));
       });
       test('Exec país inválido findCountrySummary', () async {
         final exec = () async {
           await covid19Api.findCountrySummary('a', Period.today);
         };
-        final type = CovidErrorType.INVALID_RESPONSE;
-        expect(exec, throwsA(isInstanceOf<CovidError>()));
+        final type = RequestErrorType.INVALID_RESPONSE;
+        expect(exec, throwsA(isInstanceOf<RequestError>()));
         expect(exec, throwsA(predicate((e) => e.getType() == type)));
       });
     },

@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 
-enum CovidErrorType {
+enum RequestErrorType {
   INVALID_ARGUMENT,
   NETWORK_ERROR,
   RECEIVE_TIMEOUT,
@@ -8,46 +8,46 @@ enum CovidErrorType {
   UNKNOWN,
 }
 
-class CovidError implements Exception {
+class RequestError implements Exception {
   String _message;
-  CovidErrorType _apiErrorType;
+  RequestErrorType _apiErrorType;
 
-  CovidError({DioErrorType dioErrorType, CovidErrorType apiErrorType}) {
+  RequestError({DioErrorType dioErrorType, RequestErrorType apiErrorType}) {
     _apiErrorType = _getApiErrorType(dioErrorType, apiErrorType);
     _message = _getMessage();
   }
 
-  CovidErrorType _getApiErrorType(
-      DioErrorType dioType, CovidErrorType apiType) {
+  RequestErrorType _getApiErrorType(
+      DioErrorType dioType, RequestErrorType apiType) {
     if (apiType != null)
       return apiType;
-    else if (dioType == null) return CovidErrorType.UNKNOWN;
+    else if (dioType == null) return RequestErrorType.UNKNOWN;
     return _convertFromDioError(dioType);
   }
 
-  CovidErrorType _convertFromDioError(DioErrorType dioType) {
+  RequestErrorType _convertFromDioError(DioErrorType dioType) {
     switch (dioType) {
       case DioErrorType.CONNECT_TIMEOUT:
       case DioErrorType.SEND_TIMEOUT:
-        return CovidErrorType.NETWORK_ERROR;
+        return RequestErrorType.NETWORK_ERROR;
       case DioErrorType.RECEIVE_TIMEOUT:
-        return CovidErrorType.RECEIVE_TIMEOUT;
+        return RequestErrorType.RECEIVE_TIMEOUT;
       case DioErrorType.RESPONSE:
-        return CovidErrorType.INVALID_RESPONSE;
+        return RequestErrorType.INVALID_RESPONSE;
       default:
-        return CovidErrorType.UNKNOWN;
+        return RequestErrorType.UNKNOWN;
     }
   }
 
   String _getMessage() {
     switch (_apiErrorType) {
-      case CovidErrorType.INVALID_ARGUMENT:
+      case RequestErrorType.INVALID_ARGUMENT:
         return 'Argumento Inválido.';
-      case CovidErrorType.NETWORK_ERROR:
+      case RequestErrorType.NETWORK_ERROR:
         return 'Não foi possível conectar-se a rede.';
-      case CovidErrorType.RECEIVE_TIMEOUT:
+      case RequestErrorType.RECEIVE_TIMEOUT:
         return 'O Servidor demorou para responder.';
-      case CovidErrorType.INVALID_RESPONSE:
+      case RequestErrorType.INVALID_RESPONSE:
         return 'O servidor retornou uma resposta inválida.';
       default:
         return 'Erro desconhecido';
@@ -57,5 +57,5 @@ class CovidError implements Exception {
   @override
   String toString() => _message;
 
-  CovidErrorType getType() => _apiErrorType;
+  RequestErrorType getType() => _apiErrorType;
 }

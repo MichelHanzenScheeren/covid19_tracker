@@ -1,10 +1,10 @@
 import 'package:covid19_tracker_in_flutter/domain/contracts/country_contract.dart';
 import 'package:covid19_tracker_in_flutter/domain/entities/country.dart';
 
-class CountryUsaCase {
+class CountryUseCase {
   CountryContract _contract;
 
-  CountryUsaCase(CountryContract contract) {
+  CountryUseCase(CountryContract contract) {
     _contract = contract;
   }
 

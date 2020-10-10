@@ -1,4 +1,4 @@
-import 'package:covid19_tracker_in_flutter/entities/historical_item.dart';
+import 'package:covid19_tracker_in_flutter/domain/entities/historical_item.dart';
 
 class Historical {
   List<HistoricalItem> cases;

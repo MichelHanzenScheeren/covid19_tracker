@@ -1,5 +1,5 @@
 import 'package:covid19_tracker_in_flutter/data/models/summary_model.dart';
-import 'package:covid19_tracker_in_flutter/entities/summary.dart';
+import 'package:covid19_tracker_in_flutter/domain/entities/summary.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 const model = {

@@ -1,4 +1,4 @@
-import 'package:covid19_tracker_in_flutter/entities/historical.dart';
+import 'package:covid19_tracker_in_flutter/domain/entities/historical.dart';
 
 class HistoricalModel extends Historical {
   HistoricalModel._(Map<String, dynamic> map) : super(map);

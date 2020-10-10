@@ -1,6 +1,6 @@
 import 'package:covid19_tracker_in_flutter/data/models/country_summary_model.dart';
-import 'package:covid19_tracker_in_flutter/entities/coordinate.dart';
-import 'package:covid19_tracker_in_flutter/entities/country_summary.dart';
+import 'package:covid19_tracker_in_flutter/domain/entities/coordinate.dart';
+import 'package:covid19_tracker_in_flutter/domain/entities/country_summary.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 const model = {
@@ -58,5 +58,7 @@ main() {
     expect(summary.countryAbbreviation1, isInstanceOf<String>());
     expect(summary.countryAbbreviation2, isInstanceOf<String>());
     expect(summary.imageUrl, isInstanceOf<String>());
+    summary.setId('abcd');
+    expect(summary.getId, 'abcd');
   });
 }

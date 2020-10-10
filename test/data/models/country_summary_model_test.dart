@@ -58,5 +58,7 @@ main() {
     expect(summary.countryAbbreviation1, isInstanceOf<String>());
     expect(summary.countryAbbreviation2, isInstanceOf<String>());
     expect(summary.imageUrl, isInstanceOf<String>());
+    summary.setId('abcd');
+    expect(summary.getId, 'abcd');
   });
 }

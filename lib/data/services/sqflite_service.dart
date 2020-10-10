@@ -1,9 +1,11 @@
 import 'package:covid19_tracker_in_flutter/data/errors/sqflite_error.dart';
+import 'package:covid19_tracker_in_flutter/data/models/country_model.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 
 const String DATABASE_NAME = 'covid19_tracker_in_flutter.db';
 const int DATABASE_VERSION = 1;
+const String COUNTRY_TABLE = 'country_table';
 
 class SQFliteService {
   Database _database;
@@ -39,7 +41,9 @@ class SQFliteService {
 
   Future _createTables(Database db, int version) async {
     try {
-      await db.execute('');
+      await db.execute('CREATE TABLE $COUNTRY_TABLE ' +
+          '($COUNTRY_ID Text PRIMARY KEY, ' +
+          '$COUNTRY_NAME TEXT)');
     } catch (error) {
       throw SQFliteError(type: SQFliteErrorType.create);
     }

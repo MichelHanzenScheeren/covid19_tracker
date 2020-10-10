@@ -48,4 +48,8 @@ class SQFliteService {
       throw SQFliteError(type: SQFliteErrorType.create);
     }
   }
+
+  Future deleteDb() async {
+    await deleteDatabase(await _getPath());
+  }
 }

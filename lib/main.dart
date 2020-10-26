@@ -1,4 +1,5 @@
 import 'package:covid19_tracker_in_flutter/dependencies_injection.dart';
+import 'package:covid19_tracker_in_flutter/presentation/home/presentation_home.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.deepPurple,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: Container(color: Colors.deepPurple),
+      home: Home(),
     );
   }
 }

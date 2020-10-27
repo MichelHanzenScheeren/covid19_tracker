@@ -1,5 +1,8 @@
+import 'package:covid19_tracker_in_flutter/presentation/home/widget/widget_home.dart';
+import 'package:covid19_tracker_in_flutter/presentation/home/widget/widget_title.dart';
+import 'package:covid19_tracker_in_flutter/presentation/information/presentation_information.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:get/get.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -19,77 +22,32 @@ class _HomeState extends State<Home> {
             child:
                 Column(mainAxisAlignment: MainAxisAlignment.center, children: <
                     Widget>[
-              Text(
-                "Covid-19",
-                style: GoogleFonts.raleway(color: Colors.white, fontSize: 60.0),
+              TitleHome(
+                title: 'Covid-19',
+                subtitle: 'Tracker in Flutter',
               ),
-              Text(
-                "Tracker in Flutter",
-                style: GoogleFonts.raleway(color: Colors.white, fontSize: 30.0),
+              OptionsHome(
+                title: 'Informações',
+                left: 10.0,
+                top: 70.0,
+                right: 10.0,
+                down: 10.0,
+                onClick: () => Get.to(Information()),
               ),
-              Padding(
-                  padding: EdgeInsets.fromLTRB(10.0, 70.0, 10.0, 10.0),
-                  child: ButtonTheme(
-                    minWidth: 350.0,
-                    height: 60.0,
-                    child: RaisedButton(
-                      child: Text(
-                        'Informações',
-                        style: GoogleFonts.raleway(
-                            fontSize: 33.0, color: Colors.white70),
-                      ),
-                      color: Colors.red[200].withOpacity(0.6),
-                      elevation: 4.0,
-                      splashColor: Colors.grey,
-                      shape: new RoundedRectangleBorder(
-                          borderRadius: new BorderRadius.circular(25.0)),
-                      onPressed: () {
-                        // faz alguma coisa
-                      },
-                    ),
-                  )),
-              Padding(
-                  padding: EdgeInsets.fromLTRB(10.0, 15.0, 10.0, 10.0),
-                  child: ButtonTheme(
-                    minWidth: 350.0,
-                    height: 60.0,
-                    child: RaisedButton(
-                      child: Text(
-                        'Parâmetro Geral',
-                        style: GoogleFonts.raleway(
-                            fontSize: 33.0, color: Colors.white70),
-                      ),
-                      color: Colors.red[200].withOpacity(0.6),
-                      elevation: 4.0,
-                      splashColor: Colors.grey,
-                      shape: new RoundedRectangleBorder(
-                          borderRadius: new BorderRadius.circular(25.0)),
-                      onPressed: () {
-                        // faz alguma coisa
-                      },
-                    ),
-                  )),
-              Padding(
-                  padding: EdgeInsets.fromLTRB(10.0, 15.0, 10.0, 70.0),
-                  child: ButtonTheme(
-                    minWidth: 350.0,
-                    height: 60.0,
-                    child: RaisedButton(
-                      child: Text(
-                        'Últimas Pesquisas',
-                        style: GoogleFonts.raleway(
-                            fontSize: 33.0, color: Colors.white70),
-                      ),
-                      color: Colors.red[200].withOpacity(0.6),
-                      elevation: 4.0,
-                      splashColor: Colors.grey,
-                      shape: new RoundedRectangleBorder(
-                          borderRadius: new BorderRadius.circular(25.0)),
-                      onPressed: () {
-                        // faz alguma coisa
-                      },
-                    ),
-                  ))
+              OptionsHome(
+                title: 'Parâmetro Geral',
+                left: 10.0,
+                top: 15.0,
+                right: 10.0,
+                down: 10.0,
+              ),
+              OptionsHome(
+                title: 'Últimas Pesquisas',
+                left: 10.0,
+                top: 15.0,
+                right: 10.0,
+                down: 70.0,
+              )
             ]),
           )),
     );

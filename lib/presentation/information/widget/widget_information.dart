@@ -22,7 +22,8 @@ class Expansiontile extends StatelessWidget {
               ),
               children: <Widget>[
                 ListTile(
-                  title: Text(text),
+                  title: Text(text, style: GoogleFonts.raleway(
+                      fontSize: 18.0, fontWeight: FontWeight.bold),),
                 )
               ],
             ),

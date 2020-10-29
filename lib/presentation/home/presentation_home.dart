@@ -1,6 +1,8 @@
+import 'package:covid19_tracker_in_flutter/presentation/historic/presentation_historic.dart';
 import 'package:covid19_tracker_in_flutter/presentation/home/widget/widget_home.dart';
 import 'package:covid19_tracker_in_flutter/presentation/home/widget/widget_title.dart';
 import 'package:covid19_tracker_in_flutter/presentation/information/presentation_information.dart';
+import 'package:covid19_tracker_in_flutter/presentation/search/presentation_search.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -40,13 +42,15 @@ class _HomeState extends State<Home> {
                 top: 15.0,
                 right: 10.0,
                 down: 10.0,
+                onClick: () => Get.to(Search()),
               ),
               OptionsHome(
-                title: 'Últimas Pesquisas',
+                title: 'Pesquisas Favoritas',
                 left: 10.0,
                 top: 15.0,
                 right: 10.0,
                 down: 70.0,
+                onClick: () => Get.to(Favorites()),
               )
             ]),
           )),

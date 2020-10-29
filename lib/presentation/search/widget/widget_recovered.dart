@@ -25,7 +25,7 @@ class Recovered extends StatelessWidget {
                   margin: EdgeInsets.symmetric(horizontal: 25),
                   padding: EdgeInsets.all(5),
                   decoration: BoxDecoration(
-                    color: Colors.red[900],
+                    color: Colors.grey[400],
                     borderRadius: BorderRadius.circular(10),
                     boxShadow: [
                       BoxShadow(
@@ -47,7 +47,7 @@ class Recovered extends StatelessWidget {
                             EdgeInsets.symmetric(vertical: 5, horizontal: 17),
                             alignment: Alignment.center,
                             decoration: BoxDecoration(
-                                color: Colors.black26,
+                                color: Colors.redAccent.withOpacity(0.5),
                                 borderRadius: BorderRadius.circular(5)),
                             child: RichText(
                                 text: TextSpan(

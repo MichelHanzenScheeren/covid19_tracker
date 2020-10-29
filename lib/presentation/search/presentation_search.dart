@@ -1,5 +1,7 @@
+import 'package:covid19_tracker_in_flutter/presentation/search/widget/widget_graphic.dart';
 import 'package:covid19_tracker_in_flutter/presentation/search/widget/widget_informations.dart';
 import 'package:covid19_tracker_in_flutter/presentation/search/widget/widget_recovered.dart';
+import 'package:covid19_tracker_in_flutter/presentation/search/widget/widget_search_button.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -20,21 +22,28 @@ class _SearchState extends State<Search> {
               GoogleFonts.raleway(fontSize: 25.0, color: Colors.white))
       ),
       body: SingleChildScrollView(
-        child: Column(
-          children: <Widget>[
-            NewInformations(
-              cardTitle: "Casos Confirmados",
-              caseTitle: "Total",
-            ),
-            Recovered(
-              cardTitle: "Recuperados",
-              caseTitle: "Total",
-            ),
-            NewInformations(
-              cardTitle: "Óbitos",
-              caseTitle: "Total",
-            ),
-          ],
+        child: Container(
+          child: Column(
+            children: <Widget>[
+              SearchButton(),
+              NewInformations(
+                cardTitle: "Casos Confirmados",
+                caseTitle: "Total",
+              ),
+              Recovered(
+                cardTitle: "Recuperados",
+                caseTitle: "Total",
+              ),
+              NewInformations(
+                cardTitle: "Óbitos",
+                caseTitle: "Total",
+              ),
+              Container(
+                  height: 300,
+                  width: 350,
+                  child: RTLSeriesLegend.withSampleData()),
+            ],
+          ),
         ),
     ));
     }

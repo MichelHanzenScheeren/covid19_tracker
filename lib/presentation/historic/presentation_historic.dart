@@ -1,3 +1,4 @@
+import 'package:covid19_tracker_in_flutter/presentation/search/widget/widget_graphic.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -17,7 +18,9 @@ class _FavoritesState extends State<Favorites> {
               style:
               GoogleFonts.raleway(fontSize: 25.0, color: Colors.white))
       ),
-      body: SingleChildScrollView(),
+      body: SingleChildScrollView(
+
+      ),
     );
   }
 }

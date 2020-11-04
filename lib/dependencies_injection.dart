@@ -14,18 +14,18 @@ class DependenciesInjection {
 
   static void init() {
     //! Services
-    Get.lazyPut(() => RequestService());
-    Get.lazyPut(() => SQFliteService());
+    Get.put(RequestService());
+    Get.put(SQFliteService());
 
     //! Repositories
-    Get.lazyPut<CovidContract>(() => CovidRepository(Get.find()));
-    Get.lazyPut<CountryContract>(() => CountryRepository(Get.find()));
+    Get.put<CovidContract>(CovidRepository(Get.find()));
+    Get.put<CountryContract>(CountryRepository(Get.find()));
 
     //! Use cases
-    Get.lazyPut(() => CovidUseCase(Get.find()));
-    Get.lazyPut(() => CountryUseCase(Get.find()));
+    Get.put(CovidUseCase(Get.find()));
+    Get.put(CountryUseCase(Get.find()));
 
     //! Controllers
-    Get.lazyPut(() => CovidDataController(Get.find(), Get.find()));
+    Get.put(CovidDataController(Get.find(), Get.find()), permanent: true);
   }
 }

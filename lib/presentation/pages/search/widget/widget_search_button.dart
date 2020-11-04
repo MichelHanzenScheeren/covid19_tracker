@@ -20,8 +20,7 @@ class _SearchButtonState extends State<SearchButton> {
             child: DropdownButton<String>(
               value: dropdownValue,
               iconEnabledColor: Colors.white,
-              style:
-                  GoogleFonts.raleway(fontSize: 25.0, color: Colors.grey[600]),
+              style: GoogleFonts.raleway(fontSize: 25, color: Colors.grey[600]),
               underline: Container(
                 height: 2,
                 color: Colors.red,

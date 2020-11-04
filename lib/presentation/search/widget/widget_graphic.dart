@@ -1,18 +1,16 @@
-/// RTL Bar chart example
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:flutter/material.dart';
 
-class RTLSeriesLegend extends StatelessWidget {
+class Graphic extends StatelessWidget {
   final List<charts.Series> seriesList;
   final bool animate;
 
-  RTLSeriesLegend(this.seriesList, {this.animate});
+  Graphic(this.seriesList, {this.animate});
 
   /// Creates a [BarChart] with sample data and no transition.
-  factory RTLSeriesLegend.withSampleData() {
-    return new RTLSeriesLegend(
+  factory Graphic.withSampleData() {
+    return new Graphic(
       _createSampleData(),
-      // Disable animations for image tests.
       animate: false,
     );
   }
@@ -20,26 +18,7 @@ class RTLSeriesLegend extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Charts will determine if RTL is enabled by checking the directionality by
-    // requesting Directionality.of(context). This returns the text direction
-    // from the closest instance of that encloses the context passed to build
-    // the chart. A [TextDirection.rtl] will be treated as a RTL chart. This
-    // means that the directionality widget does not have to directly wrap each
-    // chart. It is show here as an example only.
-    //
-    // When the legend behavior detects RTL:
-    // [BehaviorPosition.start] is to the right of the chart.
-    // [BehaviorPosition.end] is to the left of the chart.
-    //
-    // If the [BehaviorPosition] is top or bottom, the start justification
-    // is to the right, and the end justification is to the left.
-    //
-    // The legend's tabular layout will also layout rows and columns from right
-    // to left.
-    //
-    // The below example changes the position to 'start' and max rows of 2 in
-    // order to show these effects, but are not required for SeriesLegend to
-    // work with the correct directionality.
+
     return new Directionality(
         textDirection: TextDirection.rtl,
         child: new charts.BarChart(
@@ -52,7 +31,6 @@ class RTLSeriesLegend extends StatelessWidget {
         ));
   }
 
-  /// Create series list with multiple series
   static List<charts.Series<OrdinalSales, String>> _createSampleData() {
     final desktopSalesData = [
       new OrdinalSales('2014', 5),
@@ -75,18 +53,19 @@ class RTLSeriesLegend extends StatelessWidget {
         domainFn: (OrdinalSales sales, _) => sales.year,
         measureFn: (OrdinalSales sales, _) => sales.sales,
         data: desktopSalesData,
+        colorFn: (_, __) => charts.MaterialPalette.red.shadeDefault.lighter,
       ),
       new charts.Series<OrdinalSales, String>(
         id: 'Óbitos',
         domainFn: (OrdinalSales sales, _) => sales.year,
         measureFn: (OrdinalSales sales, _) => sales.sales,
         data: tabletSalesData,
+        colorFn: (_, __) => charts.MaterialPalette.red.shadeDefault,
       ),
     ];
   }
 }
 
-/// Sample ordinal data type.
 class OrdinalSales {
   final String year;
   final int sales;

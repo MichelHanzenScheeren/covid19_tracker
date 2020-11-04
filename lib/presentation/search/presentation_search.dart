@@ -41,7 +41,7 @@ class _SearchState extends State<Search> {
               Container(
                   height: 300,
                   width: 350,
-                  child: RTLSeriesLegend.withSampleData()),
+                  child: Graphic.withSampleData()),
             ],
           ),
         ),

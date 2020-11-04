@@ -55,7 +55,7 @@ class _SearchState extends State<Search> {
                 Container(
                   height: 400,
                   width: MediaQuery.of(context).size.width - 40,
-                  child: Graphic.withSampleData(),
+                  child: Graphic.withSampleData(summary),
                 ),
               ],
             );

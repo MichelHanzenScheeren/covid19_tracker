@@ -34,7 +34,7 @@ class SearchButon extends StatelessWidget {
                   value: value,
                   child: Padding(
                     padding: const EdgeInsets.only(bottom: 5),
-                    child: Text(value),
+                    child: Text(_getTranslateValue(value)),
                   ),
                 );
               }).toList(),
@@ -61,5 +61,12 @@ class SearchButon extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  String _getTranslateValue(String value) {
+    if (value == 'North America') return 'America do Norte';
+    if (value == 'South America') return 'America do Sul';
+    if (value == 'Europe') return 'Europa';
+    return value;
   }
 }

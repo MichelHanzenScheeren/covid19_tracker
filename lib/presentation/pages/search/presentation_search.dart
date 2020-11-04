@@ -38,19 +38,16 @@ class _SearchState extends State<Search> {
                 ),
                 NewInformations(
                   cardTitle: "Casos Confirmados",
-                  caseTitle: "Total",
                   currentData: summary?.cases,
                   newData: summary?.todayCases,
                 ),
                 NewInformations(
                   cardTitle: "Recuperados",
-                  caseTitle: "Total",
                   currentData: summary?.recovered,
                   newData: summary?.todayRecovered,
                 ),
                 NewInformations(
                   cardTitle: "Óbitos",
-                  caseTitle: "Total",
                   currentData: summary?.deaths,
                   newData: summary?.todayDeaths,
                 ),

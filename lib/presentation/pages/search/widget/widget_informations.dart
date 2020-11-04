@@ -4,20 +4,17 @@ import 'package:intl/intl.dart';
 
 class NewInformations extends StatelessWidget {
   final String cardTitle;
-  final String caseTitle;
   final int currentData;
   final int newData;
 
   const NewInformations({
     this.cardTitle,
-    this.caseTitle,
     this.currentData,
     this.newData,
   });
 
   @override
   Widget build(BuildContext context) {
-    final formatter = NumberFormat("#,###");
     return Stack(
       children: <Widget>[
         Padding(
@@ -78,61 +75,9 @@ class NewInformations extends StatelessWidget {
                           padding: const EdgeInsets.only(left: 20),
                           child: Row(
                             children: <Widget>[
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: <Widget>[
-                                  Text(
-                                    currentData != null
-                                        ? formatter.format(currentData)
-                                        : '-',
-                                    style: GoogleFonts.cabin(
-                                      textStyle: TextStyle(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.w500,
-                                        fontSize: 29,
-                                      ),
-                                    ),
-                                  ),
-                                  Text(
-                                    caseTitle ?? "",
-                                    style: GoogleFonts.cabin(
-                                      textStyle: TextStyle(
-                                        color: Colors.white54,
-                                        fontWeight: FontWeight.w300,
-                                        fontSize: 17,
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
+                              _dataColumn(currentData, 'Total'),
                               Spacer(),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: <Widget>[
-                                  Text(
-                                    newData != null
-                                        ? formatter.format(newData)
-                                        : '-',
-                                    style: GoogleFonts.cabin(
-                                      textStyle: TextStyle(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.w500,
-                                        fontSize: 29,
-                                      ),
-                                    ),
-                                  ),
-                                  Text(
-                                    "Novos",
-                                    style: GoogleFonts.cabin(
-                                      textStyle: TextStyle(
-                                        color: Colors.white54,
-                                        fontWeight: FontWeight.w300,
-                                        fontSize: 17,
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
+                              _dataColumn(newData, 'Novos'),
                               Spacer(),
                             ],
                           ),
@@ -145,6 +90,35 @@ class NewInformations extends StatelessWidget {
             ),
           ),
         )
+      ],
+    );
+  }
+
+  Widget _dataColumn(int data, String legend) {
+    final formatter = NumberFormat("#,###");
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Text(
+          data != null ? formatter.format(data) : '-',
+          style: GoogleFonts.cabin(
+            textStyle: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.w500,
+              fontSize: 29,
+            ),
+          ),
+        ),
+        Text(
+          legend,
+          style: GoogleFonts.cabin(
+            textStyle: TextStyle(
+              color: Colors.white54,
+              fontWeight: FontWeight.w300,
+              fontSize: 17,
+            ),
+          ),
+        ),
       ],
     );
   }

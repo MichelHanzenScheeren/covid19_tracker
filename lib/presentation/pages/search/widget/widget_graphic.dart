@@ -11,14 +11,12 @@ class Graphic extends StatelessWidget {
   factory Graphic.withSampleData() {
     return new Graphic(
       _createSampleData(),
-      animate: false,
+      animate: true,
     );
   }
 
-
   @override
   Widget build(BuildContext context) {
-
     return new Directionality(
         textDirection: TextDirection.rtl,
         child: new charts.BarChart(
@@ -45,7 +43,6 @@ class Graphic extends StatelessWidget {
       new OrdinalSales('2016', 10),
       new OrdinalSales('2017', 20),
     ];
-
 
     return [
       new charts.Series<OrdinalSales, String>(

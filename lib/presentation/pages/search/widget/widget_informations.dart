@@ -52,7 +52,9 @@ class NewInformations extends StatelessWidget {
                               height: 40,
                               margin: EdgeInsets.all(15),
                               padding: EdgeInsets.symmetric(
-                                  vertical: 5, horizontal: 17),
+                                vertical: 5,
+                                horizontal: 17,
+                              ),
                               alignment: Alignment.center,
                               decoration: BoxDecoration(
                                 color: Colors.redAccent.withOpacity(0.5),

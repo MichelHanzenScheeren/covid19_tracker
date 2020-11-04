@@ -1,4 +1,4 @@
-import 'package:covid19_tracker_in_flutter/presentation/controllers/covid_data_controller.dart';
+import 'package:covid19_tracker_in_flutter/presentation/controllers/search_controller.dart';
 import 'package:covid19_tracker_in_flutter/presentation/pages/search/widget/widget_graphic.dart';
 import 'package:covid19_tracker_in_flutter/presentation/pages/search/widget/widget_informations.dart';
 import 'package:covid19_tracker_in_flutter/presentation/pages/search/widget/widget_search_button.dart';
@@ -12,7 +12,7 @@ class Search extends StatefulWidget {
 }
 
 class _SearchState extends State<Search> {
-  final CovidDataController _dataController = Get.find();
+  final SearchController _controller = SearchController(Get.find());
 
   @override
   Widget build(BuildContext context) {
@@ -28,31 +28,36 @@ class _SearchState extends State<Search> {
       body: SingleChildScrollView(
         child: Container(
           child: Obx(() {
-            final worldSummary = _dataController.worldSummary;
+            final summary = _controller.getCurrentSummary;
             return Column(
               children: <Widget>[
-                SearchButton(),
+                SearchButon(
+                  currentValue: _controller.getCurrentSummaryName,
+                  summarys: _controller.getListOfSummarys,
+                  onChange: _controller.setCurrentSummaryName,
+                ),
                 NewInformations(
                   cardTitle: "Casos Confirmados",
                   caseTitle: "Total",
-                  currentData: worldSummary?.cases,
-                  newData: worldSummary?.todayCases,
+                  currentData: summary?.cases,
+                  newData: summary?.todayCases,
                 ),
                 NewInformations(
                   cardTitle: "Recuperados",
                   caseTitle: "Total",
-                  currentData: worldSummary?.recovered,
-                  newData: worldSummary?.todayRecovered,
+                  currentData: summary?.recovered,
+                  newData: summary?.todayRecovered,
                 ),
                 NewInformations(
                   cardTitle: "Óbitos",
                   caseTitle: "Total",
-                  currentData: worldSummary?.deaths,
-                  newData: worldSummary?.todayDeaths,
+                  currentData: summary?.deaths,
+                  newData: summary?.todayDeaths,
                 ),
+                SizedBox(height: 10),
                 Container(
-                  height: 300,
-                  width: 350,
+                  height: 400,
+                  width: MediaQuery.of(context).size.width - 40,
                   child: Graphic.withSampleData(),
                 ),
               ],

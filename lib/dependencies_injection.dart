@@ -6,6 +6,7 @@ import 'package:covid19_tracker_in_flutter/domain/contracts/country_contract.dar
 import 'package:covid19_tracker_in_flutter/domain/contracts/covid_contract.dart';
 import 'package:covid19_tracker_in_flutter/domain/use_cases/country_use_case.dart';
 import 'package:covid19_tracker_in_flutter/domain/use_cases/covid_use_case.dart';
+import 'package:covid19_tracker_in_flutter/presentation/controllers/covid_data_controller.dart';
 import 'package:get/get.dart';
 
 class DependenciesInjection {
@@ -23,5 +24,8 @@ class DependenciesInjection {
     //! Use cases
     Get.lazyPut(() => CovidUseCase(Get.find()));
     Get.lazyPut(() => CountryUseCase(Get.find()));
+
+    //! Controllers
+    Get.lazyPut(() => CovidDataController(Get.find(), Get.find()));
   }
 }

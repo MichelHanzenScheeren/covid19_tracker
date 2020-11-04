@@ -1,4 +1,4 @@
-import 'package:covid19_tracker_in_flutter/presentation/information/widget/widget_information.dart';
+import 'package:covid19_tracker_in_flutter/presentation/pages/information/widget/widget_information.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 

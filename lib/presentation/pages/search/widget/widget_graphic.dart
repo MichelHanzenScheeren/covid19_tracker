@@ -11,22 +11,25 @@ class Graphic extends StatelessWidget {
   factory Graphic.withSampleData(Summary summary) {
     return Graphic(
       _createSampleData(summary),
-      animate: true,
+      animate: false,
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    return new Directionality(
-        textDirection: TextDirection.rtl,
-        child: new charts.BarChart(
-          seriesList,
-          animate: animate,
-          behaviors: [
-            new charts.SeriesLegend(
-                position: charts.BehaviorPosition.end, desiredMaxRows: 2)
-          ],
-        ));
+    return Directionality(
+      textDirection: TextDirection.rtl,
+      child: charts.BarChart(
+        seriesList,
+        animate: animate,
+        behaviors: [
+          charts.SeriesLegend(
+            position: charts.BehaviorPosition.end,
+            desiredMaxRows: 2,
+          )
+        ],
+      ),
+    );
   }
 
   static List<charts.Series<_SummaryItem, String>> _createSampleData(

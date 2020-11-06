@@ -20,6 +20,7 @@ class CovidDataController extends GetxController {
 
   Summary get worldSummary => _worldSummary?.value;
   List<ContinentSummary> get continentSummarys => _continentSummarys?.toList();
+  List<Country> get favoriteCountries => _favoriteCountries.toList();
 
   void _loadData() {
     loadWorldSummary();
@@ -38,7 +39,17 @@ class CovidDataController extends GetxController {
   }
 
   void loadFavoriteCountries() async {
-    final favorites = await _dbUseCase.readAll();
+    final List<Country> favorites = List.from(await _dbUseCase.readAll());
     _favoriteCountries.value = favorites;
+  }
+
+  Future<void> addFavorite(String name) async {
+    String id = await _dbUseCase.insert(name);
+    _favoriteCountries.add(Country(id, name));
+  }
+
+  Future<void> removeFavorite(String id) async {
+    await _dbUseCase.delete(id);
+    _favoriteCountries.removeWhere((fav) => fav.id == id);
   }
 }

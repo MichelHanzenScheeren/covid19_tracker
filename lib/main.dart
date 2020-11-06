@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       title: 'Covid-19 Tracker in Flutter',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.deepPurple,
+        primarySwatch: Colors.red,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: Home(),

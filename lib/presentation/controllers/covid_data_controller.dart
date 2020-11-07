@@ -3,6 +3,7 @@ import 'package:covid19_tracker_in_flutter/domain/entities/country.dart';
 import 'package:covid19_tracker_in_flutter/domain/entities/summary.dart';
 import 'package:covid19_tracker_in_flutter/domain/use_cases/country_use_case.dart';
 import 'package:covid19_tracker_in_flutter/domain/use_cases/covid_use_case.dart';
+import 'package:covid19_tracker_in_flutter/presentation/widgets/my_snackbar.dart';
 import 'package:get/get.dart';
 
 class CovidDataController extends GetxController {
@@ -31,14 +32,22 @@ class CovidDataController extends GetxController {
   }
 
   void loadWorldSummary() async {
-    Summary summary = await _apiUseCase.worldSummary();
-    _worldSummary.value = summary;
+    try {
+      Summary summary = await _apiUseCase.worldSummary();
+      _worldSummary.value = summary;
+    } catch (erro) {
+      MySnackBar(message: erro.toString(), timeDelay: 1);
+    }
   }
 
   void loadContinentsSummary() async {
-    List<ContinentSummary> summarys = await _apiUseCase.continentsSummary();
-    _continentSummarys.value = summarys;
-    _saveAllCountries();
+    try {
+      List<ContinentSummary> summarys = await _apiUseCase.continentsSummary();
+      _continentSummarys.value = summarys;
+      _saveAllCountries();
+    } catch (erro) {
+      MySnackBar(message: erro.toString(), timeDelay: 1);
+    }
   }
 
   void _saveAllCountries() {
@@ -48,8 +57,12 @@ class CovidDataController extends GetxController {
   }
 
   void loadFavoriteCountries() async {
-    final List<Country> favorites = List.from(await _dbUseCase.readAll());
-    _favoriteCountries.value = favorites;
+    try {
+      final List<Country> favorites = List.from(await _dbUseCase.readAll());
+      _favoriteCountries.value = favorites;
+    } catch (erro) {
+      MySnackBar(message: erro.toString(), timeDelay: 1);
+    }
   }
 
   Future<void> addFavorite(String name) async {

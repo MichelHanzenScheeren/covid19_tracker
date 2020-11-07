@@ -1,4 +1,5 @@
 import 'package:covid19_tracker_in_flutter/presentation/controllers/covid_data_controller.dart';
+import 'package:covid19_tracker_in_flutter/presentation/widgets/my_snackbar.dart';
 import 'package:get/get.dart';
 
 class HistoricController extends GetxController {
@@ -36,11 +37,13 @@ class HistoricController extends GetxController {
         final favorites = dataController.favoriteCountries;
         final country = favorites.where((e) => e.name == name)?.first;
         await dataController.removeFavorite(country?.id);
+        MySnackBar(message: 'Favorito removido.', type: SnackType.success);
       } else {
         await dataController.addFavorite(name);
+        MySnackBar(message: 'Favorito adicionado.', type: SnackType.success);
       }
     } catch (erro) {
-      print(erro);
+      MySnackBar(message: erro.toString(), duration: 3);
     }
   }
 }

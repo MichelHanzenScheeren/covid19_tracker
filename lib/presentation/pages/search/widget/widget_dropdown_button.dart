@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class SearchButon extends StatelessWidget {
+class DropdownButon extends StatelessWidget {
   final String currentValue;
   final List<String> summarys;
   final Function(String) onChange;
 
-  SearchButon({
+  DropdownButon({
     @required this.currentValue,
     @required this.summarys,
     this.onChange,
@@ -40,24 +40,6 @@ class SearchButon extends StatelessWidget {
               }).toList(),
             ),
           ),
-          SizedBox.fromSize(
-            size: Size(45, 45),
-            child: ClipOval(
-              child: Material(
-                color: Colors.transparent, // button color
-                child: InkWell(
-                  splashColor: Colors.grey, // splash color
-                  onTap: () {}, // button pressed
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Icon(Icons.search),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-          )
         ],
       ),
     );

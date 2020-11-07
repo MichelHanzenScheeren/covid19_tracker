@@ -1,7 +1,8 @@
 import 'package:covid19_tracker_in_flutter/presentation/controllers/search_controller.dart';
 import 'package:covid19_tracker_in_flutter/presentation/pages/search/widget/widget_graphic.dart';
 import 'package:covid19_tracker_in_flutter/presentation/pages/search/widget/widget_informations.dart';
-import 'package:covid19_tracker_in_flutter/presentation/pages/search/widget/widget_search_button.dart';
+import 'package:covid19_tracker_in_flutter/presentation/pages/search/widget/widget_load_failed.dart';
+import 'package:covid19_tracker_in_flutter/presentation/pages/search/widget/widget_dropdown_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -31,7 +32,8 @@ class _SearchState extends State<Search> {
             final summary = _controller.getCurrentSummary;
             return Column(
               children: <Widget>[
-                SearchButon(
+                summary != null ? Container() : LoadFailed(),
+                DropdownButon(
                   currentValue: _controller.getCurrentSummaryName,
                   summarys: _controller.getListOfSummarys,
                   onChange: _controller.setCurrentSummaryName,
@@ -52,11 +54,13 @@ class _SearchState extends State<Search> {
                   newData: summary?.todayDeaths,
                 ),
                 SizedBox(height: 10),
-                Container(
-                  height: 400,
-                  width: MediaQuery.of(context).size.width - 40,
-                  child: Graphic.withSampleData(summary),
-                ),
+                summary == null
+                    ? Container()
+                    : Container(
+                        height: 400,
+                        width: MediaQuery.of(context).size.width - 40,
+                        child: Graphic.withSampleData(summary),
+                      ),
               ],
             );
           }),

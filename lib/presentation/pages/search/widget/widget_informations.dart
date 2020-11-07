@@ -89,7 +89,7 @@ class NewInformations extends StatelessWidget {
               ),
             ),
           ),
-        )
+        ),
       ],
     );
   }

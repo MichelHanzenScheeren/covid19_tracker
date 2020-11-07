@@ -16,44 +16,48 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-          decoration: BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage("images/covid.jpeg"), fit: BoxFit.cover),
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("images/covid.jpeg"),
+            fit: BoxFit.cover,
           ),
-          child: Center(
-            child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  TitleHome(
-                    title: 'Covid-19',
-                    subtitle: 'Tracker in Flutter',
-                  ),
-                  OptionsHome(
-                    title: 'Informações',
-                    left: 10.0,
-                    top: 70.0,
-                    right: 10.0,
-                    down: 10.0,
-                    onClick: () => Get.to(Information()),
-                  ),
-                  OptionsHome(
-                    title: 'Parâmetro Geral',
-                    left: 10.0,
-                    top: 15.0,
-                    right: 10.0,
-                    down: 10.0,
-                    onClick: () => Get.to(Search()),
-                  ),
-                  OptionsHome(
-                    title: 'Pesquisas Favoritas',
-                    left: 10.0,
-                    top: 15.0,
-                    right: 10.0,
-                    down: 70.0,
-                    onClick: () => Get.to(Favorites()),
-                  )
-                ]),
-          )),
+        ),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              TitleHome(
+                title: 'Covid-19',
+                subtitle: 'Tracker in Flutter',
+              ),
+              OptionsHome(
+                title: 'Informações',
+                left: 10.0,
+                top: 70.0,
+                right: 10.0,
+                down: 10.0,
+                onClick: () => Get.to(Information()),
+              ),
+              OptionsHome(
+                title: 'Parâmetro Geral',
+                left: 10.0,
+                top: 15.0,
+                right: 10.0,
+                down: 10.0,
+                onClick: () => Get.to(Search()),
+              ),
+              OptionsHome(
+                title: 'Pesquisas Favoritas',
+                left: 10.0,
+                top: 15.0,
+                right: 10.0,
+                down: 70.0,
+                onClick: () => Get.to(Favorites()),
+              )
+            ],
+          ),
+        ),
+      ),
     );
   }
 }

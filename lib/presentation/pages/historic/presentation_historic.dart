@@ -1,4 +1,5 @@
 import 'package:covid19_tracker_in_flutter/presentation/controllers/historic_controller.dart';
+import 'package:covid19_tracker_in_flutter/presentation/pages/historic/widget/widget_empty_countries.dart';
 import 'package:covid19_tracker_in_flutter/presentation/pages/historic/widget/widget_list_item.dart';
 import 'package:covid19_tracker_in_flutter/presentation/pages/historic/widget/widget_my_textfield.dart';
 import 'package:flutter/material.dart';
@@ -17,10 +18,11 @@ class _FavoritesState extends State<Favorites> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.redAccent[100],
-        title: MyTextField(onChange: _controller.changeSearchValue),
+        title: MyTextField(_controller),
       ),
       body: Obx(() {
         final items = _controller.countriesNames;
+        if (items.length == 0) return EmptyCountries();
         return ListView.builder(
           itemCount: items.length,
           itemBuilder: (context, index) {

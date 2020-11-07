@@ -16,10 +16,12 @@ class CovidDataController extends GetxController {
   CovidUseCase _apiUseCase;
   Rx<Summary> _worldSummary = Rx<Summary>();
   RxList<ContinentSummary> _continentSummarys = RxList<ContinentSummary>();
+  RxList<String> _allCountriesNames = RxList<String>();
   RxList<Country> _favoriteCountries = RxList<Country>();
 
   Summary get worldSummary => _worldSummary?.value;
   List<ContinentSummary> get continentSummarys => _continentSummarys?.toList();
+  List<String> get getAllCountriesNames => _allCountriesNames?.toList();
   List<Country> get favoriteCountries => _favoriteCountries.toList();
 
   void _loadData() {
@@ -36,6 +38,13 @@ class CovidDataController extends GetxController {
   void loadContinentsSummary() async {
     List<ContinentSummary> summarys = await _apiUseCase.continentsSummary();
     _continentSummarys.value = summarys;
+    _saveAllCountries();
+  }
+
+  void _saveAllCountries() {
+    for (final summary in continentSummarys)
+      for (final name in summary.countries) _allCountriesNames.add(name);
+    _allCountriesNames.sort((a, b) => a.compareTo(b));
   }
 
   void loadFavoriteCountries() async {

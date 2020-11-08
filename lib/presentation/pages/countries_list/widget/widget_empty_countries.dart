@@ -6,6 +6,7 @@ class EmptyCountries extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         ListTile(
           title: Padding(
@@ -13,16 +14,16 @@ class EmptyCountries extends StatelessWidget {
             child: Center(
               child: Text(
                 'Nenhum país encontrado...',
+                textAlign: TextAlign.center,
                 style: GoogleFonts.raleway(
-                  fontSize: 20,
+                  fontSize: 24,
                   fontWeight: FontWeight.bold,
                 ),
               ),
             ),
           ),
         ),
-        SizedBox(height: 10),
-        Icon(Icons.search_off, size: 80),
+        Icon(Icons.search_off, size: 100),
       ],
     );
   }

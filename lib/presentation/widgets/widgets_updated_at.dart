@@ -19,7 +19,7 @@ class UpdatedAt extends StatelessWidget {
             " Atualizado ${_formatData()} às ${_formatTime()} ",
             style: GoogleFonts.raleway(
               fontSize: 13,
-              color: Colors.black,
+              color: Colors.grey[400],
             ),
           ),
           Expanded(child: Divider(color: Colors.grey[400])),

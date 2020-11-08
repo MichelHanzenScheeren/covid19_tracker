@@ -7,18 +7,23 @@ class CountryController extends GetxController {
   CountryController(this.dataController);
 
   CovidDataController dataController;
-  CountrySummary _countrySummary;
+  Rx<CountrySummary> _countrySummary = Rx<CountrySummary>();
 
-  CountrySummary get getCountrySummary => _countrySummary;
+  CountrySummary get getCountrySummary => _countrySummary.value;
 
-  Future<bool> getCountryData(String countryName) async {
+  Future<bool> getCountryData(String country) async {
     try {
-      _countrySummary = await dataController.getCountryData(countryName);
+      _countrySummary.value = await dataController.getCountryData(country);
       if (_countrySummary != null) return Future.value(true);
       return Future.value(false);
     } catch (erro) {
       MySnackBar(message: erro.toString());
       return Future.value(false);
     }
+  }
+
+  Future<void> updateCountryData(String country) async {
+    dataController.redefineCountryData(country);
+    await getCountryData(country);
   }
 }

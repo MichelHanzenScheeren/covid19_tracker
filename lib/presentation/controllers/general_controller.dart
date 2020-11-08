@@ -33,4 +33,10 @@ class GeneralController extends GetxController {
       );
     }
   }
+
+  Future<void> refreshData() async {
+    await dataController.loadContinentsSummary();
+    await dataController.loadFavoriteCountries();
+    await dataController.loadWorldSummary();
+  }
 }

@@ -34,7 +34,7 @@ class CovidDataController extends GetxController {
     loadFavoriteCountries();
   }
 
-  void loadWorldSummary() async {
+  Future<void> loadWorldSummary() async {
     try {
       Summary summary = await _apiUseCase.worldSummary();
       _worldSummary.value = summary;
@@ -43,7 +43,7 @@ class CovidDataController extends GetxController {
     }
   }
 
-  void loadContinentsSummary() async {
+  Future<void> loadContinentsSummary() async {
     try {
       List<ContinentSummary> summarys = await _apiUseCase.continentsSummary();
       _continentSummarys.value = summarys;
@@ -59,7 +59,7 @@ class CovidDataController extends GetxController {
     _allCountriesNames.sort((a, b) => a.compareTo(b));
   }
 
-  void loadFavoriteCountries() async {
+  Future<void> loadFavoriteCountries() async {
     try {
       final List<Country> favorites = List.from(await _dbUseCase.readAll());
       _favoriteCountries.value = favorites;
@@ -86,5 +86,9 @@ class CovidDataController extends GetxController {
       );
     }
     return _countrySummarys[countryName];
+  }
+
+  void redefineCountryData(String countryName) {
+    _countrySummarys[countryName] = null;
   }
 }

@@ -22,7 +22,7 @@ main() {
     });
     test('instanciação DioErrorType.DEFAULT', () {
       final except = RequestError(dioErrorType: DioErrorType.DEFAULT);
-      expect(except.getType(), equals(RequestErrorType.UNKNOWN));
+      expect(except.getType(), equals(RequestErrorType.NETWORK_ERROR));
     });
     test('instanciação DioErrorType.DEFAULT', () {
       final except = RequestError(dioErrorType: DioErrorType.SEND_TIMEOUT);

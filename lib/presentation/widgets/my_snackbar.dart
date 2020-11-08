@@ -36,6 +36,7 @@ class MySnackBar {
         snackPosition: SnackPosition.BOTTOM,
         margin: const EdgeInsets.all(10),
         padding: const EdgeInsets.all(15),
+        dismissDirection: SnackDismissDirection.HORIZONTAL,
         duration: Duration(
             seconds: duration != null
                 ? duration

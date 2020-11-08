@@ -5,7 +5,7 @@ class LoadFailed extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.fromLTRB(15, 15, 15, 0),
+      padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
       child: Card(
         color: Colors.red,
         shape: RoundedRectangleBorder(

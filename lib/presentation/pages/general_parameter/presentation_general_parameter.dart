@@ -1,7 +1,7 @@
 import 'package:covid19_tracker_in_flutter/presentation/controllers/general_controller.dart';
 import 'package:covid19_tracker_in_flutter/presentation/pages/general_parameter/widget/widget_dropdown_button.dart';
 import 'package:covid19_tracker_in_flutter/presentation/pages/general_parameter/widget/widget_graphic.dart';
-import 'package:covid19_tracker_in_flutter/presentation/pages/general_parameter/widget/widget_informations.dart';
+import 'package:covid19_tracker_in_flutter/presentation/widgets/widget_informations.dart';
 import 'package:covid19_tracker_in_flutter/presentation/pages/general_parameter/widget/widget_load_failed.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

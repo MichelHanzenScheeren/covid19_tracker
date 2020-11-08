@@ -3,7 +3,7 @@ import 'package:covid19_tracker_in_flutter/presentation/pages/country_parameter/
 import 'package:covid19_tracker_in_flutter/presentation/pages/country_parameter/widgets/widget_failed_load.dart';
 import 'package:covid19_tracker_in_flutter/presentation/pages/country_parameter/widgets/widget_loading.dart';
 import 'package:covid19_tracker_in_flutter/presentation/pages/country_parameter/widgets/widgets_updated_at.dart';
-import 'package:covid19_tracker_in_flutter/presentation/pages/general_parameter/widget/widget_informations.dart';
+import 'package:covid19_tracker_in_flutter/presentation/widgets/widget_informations.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';

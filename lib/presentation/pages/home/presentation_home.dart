@@ -6,12 +6,7 @@ import 'package:covid19_tracker_in_flutter/presentation/pages/information/presen
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class Home extends StatefulWidget {
-  @override
-  _HomeState createState() => _HomeState();
-}
-
-class _HomeState extends State<Home> {
+class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,25 +27,19 @@ class _HomeState extends State<Home> {
               ),
               OptionsHome(
                 title: 'Informações',
-                left: 10.0,
                 top: 70.0,
-                right: 10.0,
                 down: 10.0,
                 onClick: () => Get.to(Information()),
               ),
               OptionsHome(
                 title: 'Parâmetro Geral',
-                left: 10.0,
                 top: 15.0,
-                right: 10.0,
                 down: 10.0,
                 onClick: () => Get.to(GeneralParameter()),
               ),
               OptionsHome(
                 title: 'Lista de Países',
-                left: 10.0,
                 top: 15.0,
-                right: 10.0,
                 down: 70.0,
                 onClick: () => Get.to(CountriesList()),
               )

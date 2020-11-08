@@ -5,12 +5,7 @@ import 'package:covid19_tracker_in_flutter/presentation/pages/countries_list/wid
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class CountriesList extends StatefulWidget {
-  @override
-  _CountriesListState createState() => _CountriesListState();
-}
-
-class _CountriesListState extends State<CountriesList> {
+class CountriesList extends StatelessWidget {
   final _controller = HistoricController(Get.find());
 
   @override

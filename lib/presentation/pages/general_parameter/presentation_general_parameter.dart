@@ -7,12 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class GeneralParameter extends StatefulWidget {
-  @override
-  _GeneralParameterState createState() => _GeneralParameterState();
-}
-
-class _GeneralParameterState extends State<GeneralParameter> {
+class GeneralParameter extends StatelessWidget {
   final SearchController _controller = SearchController(Get.find());
 
   @override

@@ -2,8 +2,8 @@ import 'package:covid19_tracker_in_flutter/presentation/controllers/covid_data_c
 import 'package:covid19_tracker_in_flutter/presentation/widgets/my_snackbar.dart';
 import 'package:get/get.dart';
 
-class HistoricController extends GetxController {
-  HistoricController(this.dataController);
+class CountriesListController extends GetxController {
+  CountriesListController(this.dataController);
 
   CovidDataController dataController;
   RxString _search = ''.obs;

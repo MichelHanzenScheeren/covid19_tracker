@@ -1,4 +1,4 @@
-import 'package:covid19_tracker_in_flutter/presentation/controllers/search_controller.dart';
+import 'package:covid19_tracker_in_flutter/presentation/controllers/general_controller.dart';
 import 'package:covid19_tracker_in_flutter/presentation/pages/general_parameter/widget/widget_dropdown_button.dart';
 import 'package:covid19_tracker_in_flutter/presentation/pages/general_parameter/widget/widget_graphic.dart';
 import 'package:covid19_tracker_in_flutter/presentation/pages/general_parameter/widget/widget_informations.dart';
@@ -8,7 +8,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class GeneralParameter extends StatelessWidget {
-  final SearchController _controller = SearchController(Get.find());
+  final GeneralController _controller = GeneralController(Get.find());
 
   @override
   Widget build(BuildContext context) {

@@ -2,8 +2,8 @@ import 'package:covid19_tracker_in_flutter/domain/entities/summary.dart';
 import 'package:covid19_tracker_in_flutter/presentation/controllers/covid_data_controller.dart';
 import 'package:get/get.dart';
 
-class SearchController extends GetxController {
-  SearchController(this.dataController);
+class GeneralController extends GetxController {
+  GeneralController(this.dataController);
 
   CovidDataController dataController;
   RxString _currentSummaryName = 'Mundo'.obs;

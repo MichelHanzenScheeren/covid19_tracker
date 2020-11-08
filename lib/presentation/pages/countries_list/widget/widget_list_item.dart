@@ -1,4 +1,6 @@
+import 'package:covid19_tracker_in_flutter/presentation/pages/country_parameter/presentatios_country_parameter.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class ListItem extends StatelessWidget {
   final String item;
@@ -23,6 +25,7 @@ class ListItem extends StatelessWidget {
             ),
             onPressed: () async => await addOrRemoveFavorite(item),
           ),
+          onTap: () => Get.to(CountryParameter(country: item)),
         ),
         Divider(height: 8),
       ],

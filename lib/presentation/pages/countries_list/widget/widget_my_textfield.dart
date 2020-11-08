@@ -1,10 +1,10 @@
-import 'package:covid19_tracker_in_flutter/presentation/controllers/historic_controller.dart';
+import 'package:covid19_tracker_in_flutter/presentation/controllers/countries_list_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class MyTextField extends StatelessWidget {
-  final HistoricController controller;
+  final CountriesListController controller;
   final textEditing = TextEditingController();
 
   MyTextField(this.controller);

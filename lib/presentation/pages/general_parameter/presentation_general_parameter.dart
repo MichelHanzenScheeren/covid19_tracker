@@ -1,18 +1,18 @@
 import 'package:covid19_tracker_in_flutter/presentation/controllers/search_controller.dart';
-import 'package:covid19_tracker_in_flutter/presentation/pages/search/widget/widget_graphic.dart';
-import 'package:covid19_tracker_in_flutter/presentation/pages/search/widget/widget_informations.dart';
-import 'package:covid19_tracker_in_flutter/presentation/pages/search/widget/widget_load_failed.dart';
-import 'package:covid19_tracker_in_flutter/presentation/pages/search/widget/widget_dropdown_button.dart';
+import 'package:covid19_tracker_in_flutter/presentation/pages/general_parameter/widget/widget_dropdown_button.dart';
+import 'package:covid19_tracker_in_flutter/presentation/pages/general_parameter/widget/widget_graphic.dart';
+import 'package:covid19_tracker_in_flutter/presentation/pages/general_parameter/widget/widget_informations.dart';
+import 'package:covid19_tracker_in_flutter/presentation/pages/general_parameter/widget/widget_load_failed.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class Search extends StatefulWidget {
+class GeneralParameter extends StatefulWidget {
   @override
-  _SearchState createState() => _SearchState();
+  _GeneralParameterState createState() => _GeneralParameterState();
 }
 
-class _SearchState extends State<Search> {
+class _GeneralParameterState extends State<GeneralParameter> {
   final SearchController _controller = SearchController(Get.find());
 
   @override

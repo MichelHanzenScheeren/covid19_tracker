@@ -1,8 +1,8 @@
-import 'package:covid19_tracker_in_flutter/presentation/pages/historic/presentation_historic.dart';
+import 'package:covid19_tracker_in_flutter/presentation/pages/countries_list/presentation_countries_list.dart';
+import 'package:covid19_tracker_in_flutter/presentation/pages/general_parameter/presentation_general_parameter.dart';
 import 'package:covid19_tracker_in_flutter/presentation/pages/home/widget/widget_home.dart';
 import 'package:covid19_tracker_in_flutter/presentation/pages/home/widget/widget_title.dart';
 import 'package:covid19_tracker_in_flutter/presentation/pages/information/presentation_information.dart';
-import 'package:covid19_tracker_in_flutter/presentation/pages/search/presentation_search.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -44,15 +44,15 @@ class _HomeState extends State<Home> {
                 top: 15.0,
                 right: 10.0,
                 down: 10.0,
-                onClick: () => Get.to(Search()),
+                onClick: () => Get.to(GeneralParameter()),
               ),
               OptionsHome(
-                title: 'Pesquisas Favoritas',
+                title: 'Lista de Países',
                 left: 10.0,
                 top: 15.0,
                 right: 10.0,
                 down: 70.0,
-                onClick: () => Get.to(Favorites()),
+                onClick: () => Get.to(CountriesList()),
               )
             ],
           ),

@@ -15,82 +15,61 @@ class NewInformations extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: <Widget>[
-        Padding(
-          padding: const EdgeInsets.symmetric(vertical: 10.0),
-          child: Container(
-            child: Center(
-              child: Column(
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+      alignment: Alignment.center,
+      child: Card(
+        color: Colors.grey[400],
+        elevation: 10,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(15),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Row(
+                mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
                   Container(
-                    width: 500,
-                    height: 150,
-                    margin: EdgeInsets.symmetric(horizontal: 25),
-                    padding: EdgeInsets.all(5),
+                    height: 40,
+                    padding: EdgeInsets.symmetric(
+                      vertical: 6,
+                      horizontal: 12,
+                    ),
+                    alignment: Alignment.center,
                     decoration: BoxDecoration(
-                      color: Colors.grey[400],
-                      borderRadius: BorderRadius.circular(10),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.12),
-                          blurRadius: 20,
-                          spreadRadius: 3.5,
-                          offset: Offset(0, 13),
-                        ),
-                      ],
+                      color: Colors.redAccent.withOpacity(0.5),
+                      borderRadius: BorderRadius.circular(5),
                     ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Row(
-                          children: <Widget>[
-                            Container(
-                              height: 40,
-                              margin: EdgeInsets.all(15),
-                              padding: EdgeInsets.symmetric(
-                                vertical: 5,
-                                horizontal: 17,
-                              ),
-                              alignment: Alignment.center,
-                              decoration: BoxDecoration(
-                                color: Colors.redAccent.withOpacity(0.5),
-                                borderRadius: BorderRadius.circular(5),
-                              ),
-                              child: RichText(
-                                text: TextSpan(
-                                  text: "$cardTitle".toUpperCase(),
-                                  style: GoogleFonts.cabin(
-                                    textStyle: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 20),
-                          child: Row(
-                            children: <Widget>[
-                              _dataColumn(currentData, 'Total'),
-                              Spacer(),
-                              _dataColumn(newData, 'Novos'),
-                              Spacer(),
-                            ],
+                    child: RichText(
+                      text: TextSpan(
+                        text: "$cardTitle".toUpperCase(),
+                        style: GoogleFonts.cabin(
+                          textStyle: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
                           ),
-                        )
-                      ],
+                        ),
+                      ),
                     ),
-                  )
+                  ),
                 ],
               ),
-            ),
+              SizedBox(height: 15),
+              Row(
+                children: <Widget>[
+                  _dataColumn(currentData, 'Total'),
+                  Spacer(),
+                  _dataColumn(newData, 'Novos'),
+                  Spacer(),
+                ],
+              )
+            ],
           ),
         ),
-      ],
+      ),
     );
   }
 

@@ -11,13 +11,16 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
+        alignment: Alignment.center,
+        height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(
           image: DecorationImage(
             image: AssetImage("images/covid.jpeg"),
             fit: BoxFit.cover,
           ),
         ),
-        child: Center(
+        child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
@@ -27,7 +30,7 @@ class Home extends StatelessWidget {
               ),
               OptionsHome(
                 title: 'Informações',
-                top: 70.0,
+                top: 50.0,
                 down: 10.0,
                 onClick: () => Get.to(Information()),
               ),
@@ -40,7 +43,7 @@ class Home extends StatelessWidget {
               OptionsHome(
                 title: 'Lista de Países',
                 top: 15.0,
-                down: 70.0,
+                down: 50.0,
                 onClick: () => Get.to(CountriesList()),
               )
             ],

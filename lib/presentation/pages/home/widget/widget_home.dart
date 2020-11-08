@@ -20,7 +20,7 @@ class OptionsHome extends StatelessWidget {
       child: Padding(
         padding: EdgeInsets.fromLTRB(10, top, 10, down),
         child: ButtonTheme(
-          minWidth: 350.0,
+          minWidth: MediaQuery.of(context).size.width * 0.85,
           height: 60.0,
           child: RaisedButton(
             child: Text(

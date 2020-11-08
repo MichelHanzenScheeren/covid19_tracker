@@ -33,7 +33,7 @@ class DropdownButon extends StatelessWidget {
                 return DropdownMenuItem<String>(
                   value: value,
                   child: Padding(
-                    padding: const EdgeInsets.only(bottom: 5),
+                    padding: const EdgeInsets.only(bottom: 5, left: 20),
                     child: Text(_getTranslateValue(value)),
                   ),
                 );

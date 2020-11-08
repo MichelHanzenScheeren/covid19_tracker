@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class TitleHome extends StatelessWidget{
+class TitleHome extends StatelessWidget {
   final String title;
   final String subtitle;
   const TitleHome({Key key, this.title, this.subtitle}) : super(key: key);
@@ -9,6 +9,7 @@ class TitleHome extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: const EdgeInsets.only(top: 50),
       child: Column(
         children: <Widget>[
           Text(
@@ -20,8 +21,7 @@ class TitleHome extends StatelessWidget{
             style: GoogleFonts.raleway(color: Colors.white, fontSize: 30.0),
           ),
         ],
-      )
+      ),
     );
   }
-
 }

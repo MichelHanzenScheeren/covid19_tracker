@@ -28,7 +28,7 @@ class CountryInformation extends StatelessWidget {
                 height: 60,
               ),
             ),
-            contentPadding: const EdgeInsets.symmetric(horizontal: 10),
+            contentPadding: const EdgeInsets.symmetric(horizontal: 15),
             title: Text(
               'País: ${summary.country} (${summary.countryAbbreviation1})',
               style: GoogleFonts.cabin(

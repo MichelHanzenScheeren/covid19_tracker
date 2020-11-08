@@ -9,26 +9,44 @@ class Expansiontile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 30.0),
-        child: Column(
-          children: <Widget>[
-            SizedBox(height: 30.0),
-            ExpansionTile(
-              title: Text(
-                title,
-                style: GoogleFonts.raleway(
-                    fontSize: 25.0, fontWeight: FontWeight.bold, color: Colors.redAccent[100]),
+    return Container(
+      margin: const EdgeInsets.symmetric(vertical: 5),
+      child: Card(
+        elevation: 5,
+        child: Padding(
+          padding: const EdgeInsets.all(10),
+          child: Column(
+            children: <Widget>[
+              Theme(
+                data: Theme.of(context).copyWith(
+                  dividerColor: Colors.transparent,
+                ),
+                child: ExpansionTile(
+                  title: Text(
+                    title,
+                    style: GoogleFonts.raleway(
+                      fontSize: 25.0,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.redAccent[100],
+                    ),
+                  ),
+                  children: <Widget>[
+                    ListTile(
+                      title: Text(
+                        text,
+                        style: GoogleFonts.raleway(
+                          fontSize: 18.0,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    )
+                  ],
+                ),
               ),
-              children: <Widget>[
-                ListTile(
-                  title: Text(text, style: GoogleFonts.raleway(
-                      fontSize: 18.0, fontWeight: FontWeight.bold),),
-                )
-              ],
-            ),
-          ],
+            ],
+          ),
         ),
+      ),
     );
   }
 }

@@ -15,8 +15,7 @@ class DropdownButon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 350,
-      padding: const EdgeInsets.all(10.0),
+      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 25),
       child: Row(
         children: [
           Expanded(
@@ -32,9 +31,12 @@ class DropdownButon extends StatelessWidget {
               items: summarys.map<DropdownMenuItem<String>>((String value) {
                 return DropdownMenuItem<String>(
                   value: value,
-                  child: Padding(
-                    padding: const EdgeInsets.only(bottom: 5, left: 20),
-                    child: Text(_getTranslateValue(value)),
+                  child: Container(
+                    padding: const EdgeInsets.only(bottom: 3),
+                    child: Text(
+                      _getTranslateValue(value),
+                      textAlign: TextAlign.center,
+                    ),
                   ),
                 );
               }).toList(),

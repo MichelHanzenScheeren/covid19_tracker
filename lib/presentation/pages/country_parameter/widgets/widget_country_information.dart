@@ -26,6 +26,11 @@ class CountryInformation extends StatelessWidget {
                 fit: BoxFit.cover,
                 width: 80,
                 height: 60,
+                errorBuilder: (_, __, ___) => Icon(
+                  Icons.error_outline,
+                  size: 60,
+                  color: Colors.grey[50],
+                ),
               ),
             ),
             contentPadding: const EdgeInsets.symmetric(horizontal: 15),

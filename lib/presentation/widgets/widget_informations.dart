@@ -6,20 +6,22 @@ class NewInformations extends StatelessWidget {
   final String cardTitle;
   final int currentData;
   final int newData;
+  final Color color;
 
   const NewInformations({
     this.cardTitle,
     this.currentData,
     this.newData,
+    this.color,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+      margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
       alignment: Alignment.center,
       child: Card(
-        color: Colors.grey[400],
+        color: color,
         elevation: 10,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
@@ -40,7 +42,7 @@ class NewInformations extends StatelessWidget {
                     ),
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
-                      color: Colors.redAccent.withOpacity(0.5),
+                      color: color.withAlpha(220),
                       borderRadius: BorderRadius.circular(5),
                     ),
                     child: RichText(

@@ -1,6 +1,6 @@
 import 'package:covid19_tracker_in_flutter/presentation/controllers/general_controller.dart';
 import 'package:covid19_tracker_in_flutter/presentation/pages/general_parameter/widget/widget_dropdown_button.dart';
-import 'package:covid19_tracker_in_flutter/presentation/pages/general_parameter/widget/widget_graphic.dart';
+import 'package:covid19_tracker_in_flutter/presentation/pages/general_parameter/widget/widget_my_bar_chart.dart';
 import 'package:covid19_tracker_in_flutter/presentation/widgets/widget_informations.dart';
 import 'package:covid19_tracker_in_flutter/presentation/pages/general_parameter/widget/widget_load_failed.dart';
 import 'package:covid19_tracker_in_flutter/presentation/widgets/widgets_updated_at.dart';
@@ -43,25 +43,22 @@ class GeneralParameter extends StatelessWidget {
                     cardTitle: "Casos Confirmados",
                     currentData: summary?.cases,
                     newData: summary?.todayCases,
+                    color: Colors.orange[600],
                   ),
                   NewInformations(
                     cardTitle: "Recuperados",
                     currentData: summary?.recovered,
                     newData: summary?.todayRecovered,
+                    color: Colors.green[600],
                   ),
                   NewInformations(
                     cardTitle: "Óbitos",
                     currentData: summary?.deaths,
                     newData: summary?.todayDeaths,
+                    color: Colors.red[600],
                   ),
                   SizedBox(height: 10),
-                  summary == null
-                      ? Container()
-                      : Container(
-                          height: 400,
-                          width: MediaQuery.of(context).size.width - 40,
-                          child: Graphic.withSampleData(summary),
-                        ),
+                  MyBarChart(_controller),
                 ],
               );
             }),

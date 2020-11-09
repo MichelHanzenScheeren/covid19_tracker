@@ -11,8 +11,7 @@ class CountryInformation extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.fromLTRB(20, 15, 20, 10),
       child: Card(
-        color: Colors.grey[400],
-        elevation: 20,
+        elevation: 10,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
         ),
@@ -29,29 +28,29 @@ class CountryInformation extends StatelessWidget {
                 errorBuilder: (_, __, ___) => Icon(
                   Icons.error_outline,
                   size: 60,
-                  color: Colors.grey[50],
+                  color: Colors.grey[700],
                 ),
               ),
             ),
             contentPadding: const EdgeInsets.symmetric(horizontal: 15),
             title: Text(
-              'País: ${summary.country} (${summary.countryAbbreviation1})',
+              '${summary.country} (${summary.countryAbbreviation1})',
               style: GoogleFonts.cabin(
                 textStyle: TextStyle(
-                  color: Colors.white,
+                  color: Colors.grey[700],
                   fontWeight: FontWeight.w400,
-                  fontSize: 22,
+                  fontSize: 20,
                 ),
               ),
             ),
             subtitle: Padding(
               padding: const EdgeInsets.only(top: 5),
               child: Text(
-                'Continente: ${summary.continent}',
+                '${summary.continent}',
                 style: GoogleFonts.cabin(
                   textStyle: TextStyle(
-                    color: Colors.white,
-                    fontSize: 18,
+                    color: Colors.grey[700],
+                    fontSize: 17,
                   ),
                 ),
               ),

@@ -22,7 +22,7 @@ class DropdownButon extends StatelessWidget {
             child: DropdownButton<String>(
               value: currentValue,
               iconEnabledColor: Colors.white,
-              style: GoogleFonts.raleway(fontSize: 25, color: Colors.grey[600]),
+              style: GoogleFonts.raleway(fontSize: 25, color: Colors.grey[700]),
               underline: Container(
                 height: 2,
                 color: Colors.red,

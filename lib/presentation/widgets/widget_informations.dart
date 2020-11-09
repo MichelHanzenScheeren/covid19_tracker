@@ -7,12 +7,14 @@ class NewInformations extends StatelessWidget {
   final int currentData;
   final int newData;
   final Color color;
+  final Color titleColor;
 
   const NewInformations({
     this.cardTitle,
     this.currentData,
     this.newData,
     this.color,
+    this.titleColor,
   });
 
   @override
@@ -42,7 +44,7 @@ class NewInformations extends StatelessWidget {
                     ),
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
-                      color: color.withAlpha(220),
+                      color: titleColor,
                       borderRadius: BorderRadius.circular(5),
                     ),
                     child: RichText(

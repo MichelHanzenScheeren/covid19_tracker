@@ -27,7 +27,7 @@ class MyBarChart extends StatelessWidget {
 
       return Container(
         margin: const EdgeInsets.fromLTRB(20, 5, 20, 15),
-        height: 450,
+        height: 500,
         child: Card(
           elevation: 10,
           shape: RoundedRectangleBorder(

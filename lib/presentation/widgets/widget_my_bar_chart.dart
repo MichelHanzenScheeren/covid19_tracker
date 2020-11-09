@@ -35,6 +35,7 @@ class MyBarChart extends StatelessWidget {
           ),
           child: Column(
             children: [
+              SizedBox(height: 10),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -73,11 +74,11 @@ class MyBarChart extends StatelessWidget {
         alignment: Alignment.center,
         width: 120,
         padding: const EdgeInsets.only(bottom: 2.5),
-        margin: const EdgeInsets.symmetric(vertical: 15),
+        margin: const EdgeInsets.only(top: 10, bottom: 10),
         decoration: BoxDecoration(
           border: Border(
             bottom: BorderSide(
-              color: enabled ? Colors.redAccent[100] : Colors.grey[200],
+              color: enabled ? Colors.redAccent[100] : Colors.grey[300],
               width: 3,
             ),
           ),

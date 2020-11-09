@@ -2,6 +2,7 @@ import 'package:covid19_tracker_in_flutter/domain/contracts/covid_contract.dart'
 import 'package:covid19_tracker_in_flutter/domain/entities/continent_summary.dart';
 import 'package:covid19_tracker_in_flutter/domain/entities/country.dart';
 import 'package:covid19_tracker_in_flutter/domain/entities/country_summary.dart';
+import 'package:covid19_tracker_in_flutter/domain/entities/historical.dart';
 import 'package:covid19_tracker_in_flutter/domain/entities/summary.dart';
 import 'package:covid19_tracker_in_flutter/domain/use_cases/country_use_case.dart';
 import 'package:covid19_tracker_in_flutter/domain/use_cases/covid_use_case.dart';
@@ -22,6 +23,7 @@ class CovidDataController extends GetxController {
   RxList<String> _allCountriesNames = RxList<String>();
   RxList<Country> _favoriteCountries = RxList<Country>();
   Map _countrySummarys = Map<String, CountrySummary>();
+  Map _countryHistoricals = Map<String, Historical>();
 
   Summary get worldSummary => _worldSummary?.value;
   List<ContinentSummary> get continentSummarys => _continentSummarys?.toList();
@@ -90,5 +92,15 @@ class CovidDataController extends GetxController {
 
   void redefineCountryData(String countryName) {
     _countrySummarys[countryName] = null;
+  }
+
+  Future<Historical> getCountryHistorical(String countryName) async {
+    if (_countryHistoricals[countryName] == null) {
+      _countryHistoricals[countryName] = await _apiUseCase.countryHistorical(
+        countryName,
+        'all',
+      );
+    }
+    return _countryHistoricals[countryName];
   }
 }

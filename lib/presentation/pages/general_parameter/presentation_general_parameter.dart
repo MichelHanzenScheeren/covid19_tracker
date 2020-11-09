@@ -61,7 +61,7 @@ class GeneralParameter extends StatelessWidget {
                     titleColor: Colors.red[800],
                   ),
                   SizedBox(height: 10),
-                  MyBarChart(summary),
+                  summary == null ? Container() : MyBarChart(summary),
                 ],
               );
             }),

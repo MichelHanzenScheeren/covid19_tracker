@@ -2,6 +2,7 @@ import 'package:covid19_tracker_in_flutter/presentation/controllers/country_cont
 import 'package:covid19_tracker_in_flutter/presentation/pages/country_parameter/widgets/widget_country_information.dart';
 import 'package:covid19_tracker_in_flutter/presentation/pages/country_parameter/widgets/widget_failed_load.dart';
 import 'package:covid19_tracker_in_flutter/presentation/pages/country_parameter/widgets/widget_loading.dart';
+import 'package:covid19_tracker_in_flutter/presentation/pages/country_parameter/widgets/widget_my_line_chart.dart';
 import 'package:covid19_tracker_in_flutter/presentation/widgets/widget_my_bar_chart.dart';
 import 'package:covid19_tracker_in_flutter/presentation/widgets/widgets_updated_at.dart';
 import 'package:covid19_tracker_in_flutter/presentation/widgets/widget_informations.dart';
@@ -65,6 +66,10 @@ class CountryParameter extends StatelessWidget {
                       ),
                       SizedBox(height: 10),
                       MyBarChart(summary),
+                      MyLineChart(
+                        showChart: summary != null,
+                        countryName: country,
+                      ),
                     ],
                   );
                 });

@@ -1,6 +1,6 @@
 import 'package:covid19_tracker_in_flutter/presentation/controllers/general_controller.dart';
 import 'package:covid19_tracker_in_flutter/presentation/pages/general_parameter/widget/widget_dropdown_button.dart';
-import 'package:covid19_tracker_in_flutter/presentation/pages/general_parameter/widget/widget_my_bar_chart.dart';
+import 'package:covid19_tracker_in_flutter/presentation/widgets/widget_my_bar_chart.dart';
 import 'package:covid19_tracker_in_flutter/presentation/widgets/widget_informations.dart';
 import 'package:covid19_tracker_in_flutter/presentation/pages/general_parameter/widget/widget_load_failed.dart';
 import 'package:covid19_tracker_in_flutter/presentation/widgets/widgets_updated_at.dart';
@@ -61,7 +61,7 @@ class GeneralParameter extends StatelessWidget {
                     titleColor: Colors.red[800],
                   ),
                   SizedBox(height: 10),
-                  MyBarChart(_controller),
+                  MyBarChart(summary),
                 ],
               );
             }),

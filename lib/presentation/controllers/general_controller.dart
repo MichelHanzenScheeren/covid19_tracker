@@ -1,6 +1,5 @@
 import 'package:covid19_tracker_in_flutter/domain/entities/summary.dart';
 import 'package:covid19_tracker_in_flutter/presentation/controllers/covid_data_controller.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class GeneralController extends GetxController {
@@ -40,17 +39,5 @@ class GeneralController extends GetxController {
     await dataController.loadContinentsSummary();
     await dataController.loadFavoriteCountries();
     await dataController.loadWorldSummary();
-  }
-
-  List<Map<String, dynamic>> getChartData() {
-    final summary = getCurrentSummary;
-    final c1 = Colors.orange[600];
-    final c2 = Colors.green[600];
-    final c3 = Colors.red[600];
-    return [
-      {'x': 'Casos', 'y': summary.cases, 'color': c1},
-      {'x': 'Recuperados', 'y': summary.recovered, 'color': c2},
-      {'x': 'Óbitos', 'y': summary.deaths, 'color': c3},
-    ];
   }
 }

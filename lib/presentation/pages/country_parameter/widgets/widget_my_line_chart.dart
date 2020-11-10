@@ -47,8 +47,14 @@ class MyLineChart extends StatelessWidget {
                 onChange: controller.setCurrentMetric,
               ),
               MyDropDown(
+                title: 'Período:',
+                items: LineChartController.periods,
+                current: controller.getCurrentPeriod(),
+                onChange: controller.setCurrentPeriod,
+              ),
+              MyDropDown(
                 title: 'Intervalo:',
-                items: LineChartController.interval,
+                items: LineChartController.intervals,
                 current: controller.getCurrentInterval(),
                 onChange: controller.setCurrentInterval,
               ),
@@ -94,22 +100,21 @@ class MyLineChart extends StatelessWidget {
 
   Widget _buildChart() {
     final seriesList = [
-      charts.Series<Map<String, dynamic>, String>(
+      charts.Series<Map<String, dynamic>, DateTime>(
         id: 'information',
-        colorFn: (_, __) => charts.MaterialPalette.blue.shadeDefault,
-        domainFn: (Map value, _) => value['x'],
-        measureFn: (Map value, _) => value['y'],
-        fillColorFn: (map, _) => charts.ColorUtil.fromDartColor(map['color']),
+        domainFn: (map, _) => map['x'],
+        measureFn: (map, _) => map['y'],
+        colorFn: (map, _) => charts.ColorUtil.fromDartColor(map['color']),
         data: controller.seriesData(),
       ),
     ];
     return Container(
       height: 400,
       padding: const EdgeInsets.all(10),
-      child: charts.LineChart(
+      child: charts.TimeSeriesChart(
         seriesList,
         animate: true,
-        animationDuration: Duration(milliseconds: 300),
+        dateTimeFactory: const charts.LocalDateTimeFactory(),
       ),
     );
   }

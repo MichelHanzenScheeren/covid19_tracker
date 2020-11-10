@@ -17,14 +17,17 @@ class MyDropDown extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+      margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
       child: Row(
         children: [
-          Text(
-            title,
-            style: GoogleFonts.cabin(
-              color: Colors.grey[800],
-              fontSize: 20,
+          Container(
+            width: 80,
+            child: Text(
+              title,
+              style: GoogleFonts.cabin(
+                color: Colors.grey[800],
+                fontSize: 20,
+              ),
             ),
           ),
           SizedBox(width: 15),

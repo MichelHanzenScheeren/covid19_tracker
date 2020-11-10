@@ -1,9 +1,11 @@
 import 'package:covid19_tracker_in_flutter/presentation/controllers/line_chart_controller.dart';
 import 'package:covid19_tracker_in_flutter/presentation/pages/country_parameter/widgets/widget_my_dropdown.dart';
+import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
-import 'package:charts_flutter/flutter.dart' as charts;
+// import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 import 'package:progress_indicators/progress_indicators.dart';
 
 class MyLineChart extends StatelessWidget {
@@ -99,22 +101,90 @@ class MyLineChart extends StatelessWidget {
   }
 
   Widget _buildChart() {
-    final seriesList = [
-      charts.Series<Map<String, dynamic>, DateTime>(
-        id: 'information',
-        domainFn: (map, _) => map['x'],
-        measureFn: (map, _) => map['y'],
-        colorFn: (map, _) => charts.ColorUtil.fromDartColor(map['color']),
-        data: controller.seriesData(),
-      ),
-    ];
-    return Container(
-      height: 400,
-      padding: const EdgeInsets.all(10),
-      child: charts.TimeSeriesChart(
-        seriesList,
-        animate: true,
-        dateTimeFactory: const charts.LocalDateTimeFactory(),
+    final myData = controller.seriesData();
+    if (myData.length == 0) return Container();
+
+    final style = TextStyle(color: Colors.black, fontSize: 8);
+    final length = myData.length;
+    final formater = NumberFormat("#,###");
+    return AspectRatio(
+      aspectRatio: 1.2,
+      child: Container(
+        padding: EdgeInsets.only(right: 30, left: 5, top: 24, bottom: 12),
+        child: LineChart(
+          LineChartData(
+            gridData: FlGridData(
+              show: true,
+              drawVerticalLine: true,
+              getDrawingHorizontalLine: (_) {
+                return FlLine(color: Colors.grey[100], strokeWidth: 1);
+              },
+              getDrawingVerticalLine: (_) {
+                return FlLine(color: Colors.grey[100], strokeWidth: 1);
+              },
+            ),
+            borderData: FlBorderData(
+              show: true,
+              border: Border.all(color: Colors.grey[200], width: 1),
+            ),
+            titlesData: FlTitlesData(
+              show: true,
+              bottomTitles: SideTitles(
+                showTitles: true,
+                reservedSize: 8,
+                getTextStyles: (_) => style,
+                margin: 18,
+                getTitles: (value) {
+                  final number = value.toInt();
+                  if (number == 0) return myData[number]['x'];
+                  if (number == length - 1) return myData[number]['x'];
+                  if (length > 30 && number > length - 5)
+                    return myData[number]['x'];
+                  return '';
+                },
+              ),
+              leftTitles: SideTitles(
+                showTitles: true,
+                getTextStyles: (value) => style,
+                getTitles: (value) => formater.format(value),
+                reservedSize: 40,
+                margin: 10,
+              ),
+            ),
+            lineBarsData: [
+              LineChartBarData(
+                spots: List<FlSpot>.generate(
+                  myData.length,
+                  (i) => FlSpot(i + 0.0, myData[i]['y'] + 0.0),
+                ),
+                isCurved: true,
+                colors: [myData[0]['color']],
+                barWidth: 3,
+                isStrokeCapRound: true,
+                dotData: FlDotData(show: false),
+                belowBarData: BarAreaData(show: false),
+              ),
+            ],
+            lineTouchData: LineTouchData(
+              touchTooltipData: LineTouchTooltipData(
+                tooltipBgColor: myData[0]['color'],
+                tooltipPadding: EdgeInsets.all(5),
+                fitInsideHorizontally: true,
+                fitInsideVertically: true,
+                getTooltipItems: (List<LineBarSpot> touchedBarSpots) {
+                  return touchedBarSpots.map((point) {
+                    final i = point.x.toInt();
+                    return LineTooltipItem(
+                      'Data: ${myData[i]["x"]}' +
+                          '\nValor: ${formater.format(myData[i]["y"])}',
+                      TextStyle(color: Colors.grey[50], fontSize: 12),
+                    );
+                  }).toList();
+                },
+              ),
+            ),
+          ),
+        ),
       ),
     );
   }

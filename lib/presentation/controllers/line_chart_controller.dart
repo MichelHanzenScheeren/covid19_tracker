@@ -3,6 +3,7 @@ import 'package:covid19_tracker_in_flutter/domain/entities/historical_item.dart'
 import 'package:covid19_tracker_in_flutter/presentation/controllers/covid_data_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
 class LineChartController extends GetxController {
   LineChartController(this._controller);
@@ -86,7 +87,7 @@ class LineChartController extends GetxController {
       final value = data[i].value;
       final anterior = data[i - 1];
       series.add({
-        'x': data[i].date,
+        'x': DateFormat('dd/MM/yy').format(data[i].date),
         'y': interval == intervals[0] ? value : (value - anterior.value),
         'color': getColor(),
       });

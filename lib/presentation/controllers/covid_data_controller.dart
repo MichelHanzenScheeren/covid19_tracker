@@ -56,6 +56,7 @@ class CovidDataController extends GetxController {
   }
 
   void _saveAllCountries() {
+    _allCountriesNames.clear();
     for (final summary in continentSummarys)
       for (final name in summary.countries) _allCountriesNames.add(name);
     _allCountriesNames.sort((a, b) => a.compareTo(b));

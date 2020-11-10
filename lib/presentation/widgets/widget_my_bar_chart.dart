@@ -54,7 +54,7 @@ class MyBarChart extends StatelessWidget {
                 padding: const EdgeInsets.all(10),
                 child: charts.BarChart(
                   seriesList,
-                  animate: true,
+                  animate: false,
                   animationDuration: Duration(milliseconds: 300),
                 ),
               ),

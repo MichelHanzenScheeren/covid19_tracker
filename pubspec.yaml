@@ -12,6 +12,7 @@ dependencies:
   charts_flutter: ^0.9.0
   cupertino_icons: ^1.0.0
   dio: ^3.0.10
+  fl_chart: ^0.12.0
   get: ^3.12.1
   google_fonts: ^1.1.1
   intl: ^0.16.1

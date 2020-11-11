@@ -42,7 +42,6 @@ class LineChartController extends GetxController {
       _historical = await _controller.getCountryHistorical(countryName);
       return Future.value(true);
     } catch (erro) {
-      print(erro);
       return Future.value(false);
     }
   }

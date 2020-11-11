@@ -63,8 +63,8 @@ class MyLineChart extends StatelessWidget {
               FutureBuilder(
                 future: controller.getChartData(countryName),
                 builder: (context, snapshot) {
-                  if (!snapshot.hasData || snapshot.data == false)
-                    return _loadingChart(context);
+                  if (!snapshot.hasData) return _loadingChart(context);
+                  if (snapshot.data == false) return _noData(context);
                   return _buildChart();
                 },
               ),
@@ -100,13 +100,43 @@ class MyLineChart extends StatelessWidget {
     );
   }
 
+  Widget _noData(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.only(top: 50, bottom: 70),
+      width: MediaQuery.of(context).size.width,
+      alignment: Alignment.center,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          SizedBox(height: 15),
+          Text(
+            'Histórico indisponível...',
+            style: GoogleFonts.cabin(
+              fontSize: 20,
+              color: Colors.grey[800],
+              fontWeight: FontWeight.bold,
+            ),
+            textAlign: TextAlign.center,
+          ),
+          SizedBox(height: 10),
+          Icon(Icons.error_outline, size: 50, color: Colors.grey[800]),
+        ],
+      ),
+    );
+  }
+
   Widget _buildChart() {
     final myData = controller.seriesData();
     if (myData.length == 0) return Container();
 
-    final style = TextStyle(color: Colors.black, fontSize: 8);
+    final style = TextStyle(
+      color: Colors.black,
+      fontSize: 10,
+      fontWeight: FontWeight.bold,
+    );
     final length = myData.length;
     final formater = NumberFormat("#,###");
+    bool showTitle = false;
     return AspectRatio(
       aspectRatio: 1.2,
       child: Container(
@@ -117,15 +147,15 @@ class MyLineChart extends StatelessWidget {
               show: true,
               drawVerticalLine: true,
               getDrawingHorizontalLine: (_) {
-                return FlLine(color: Colors.grey[100], strokeWidth: 1);
+                return FlLine(color: Colors.grey[200], strokeWidth: 1);
               },
               getDrawingVerticalLine: (_) {
-                return FlLine(color: Colors.grey[100], strokeWidth: 1);
+                return FlLine(color: Colors.grey[200], strokeWidth: 1);
               },
             ),
             borderData: FlBorderData(
               show: true,
-              border: Border.all(color: Colors.grey[200], width: 1),
+              border: Border.all(color: Colors.grey[300], width: 1),
             ),
             titlesData: FlTitlesData(
               show: true,
@@ -136,6 +166,7 @@ class MyLineChart extends StatelessWidget {
                 margin: 18,
                 getTitles: (value) {
                   final number = value.toInt();
+                  if (number >= myData.length) return '';
                   if (number == 0) return myData[number]['x'];
                   if (number == length - 1) return myData[number]['x'];
                   if (length > 30 && number > length - 5)
@@ -146,8 +177,12 @@ class MyLineChart extends StatelessWidget {
               leftTitles: SideTitles(
                 showTitles: true,
                 getTextStyles: (value) => style,
-                getTitles: (value) => formater.format(value),
-                reservedSize: 40,
+                getTitles: (value) {
+                  showTitle = !showTitle;
+                  if (showTitle) return formater.format(value);
+                  return '';
+                },
+                reservedSize: 50,
                 margin: 10,
               ),
             ),

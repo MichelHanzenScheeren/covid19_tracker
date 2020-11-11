@@ -6,6 +6,7 @@ import 'package:covid19_tracker_in_flutter/domain/contracts/country_contract.dar
 import 'package:covid19_tracker_in_flutter/domain/contracts/covid_contract.dart';
 import 'package:covid19_tracker_in_flutter/domain/use_cases/country_use_case.dart';
 import 'package:covid19_tracker_in_flutter/domain/use_cases/covid_use_case.dart';
+import 'package:covid19_tracker_in_flutter/presentation/controllers/covid_data_controller.dart';
 import 'package:get/get.dart';
 
 class DependenciesInjection {
@@ -13,15 +14,18 @@ class DependenciesInjection {
 
   static void init() {
     //! Services
-    Get.lazyPut(() => RequestService());
-    Get.lazyPut(() => SQFliteService());
+    Get.put(RequestService());
+    Get.put(SQFliteService());
 
     //! Repositories
-    Get.lazyPut<CovidContract>(() => CovidRepository(Get.find()));
-    Get.lazyPut<CountryContract>(() => CountryRepository(Get.find()));
+    Get.put<CovidContract>(CovidRepository(Get.find()));
+    Get.put<CountryContract>(CountryRepository(Get.find()));
 
     //! Use cases
-    Get.lazyPut(() => CovidUseCase(Get.find()));
-    Get.lazyPut(() => CountryUseCase(Get.find()));
+    Get.put(CovidUseCase(Get.find()));
+    Get.put(CountryUseCase(Get.find()));
+
+    //! Controllers
+    Get.put(CovidDataController(Get.find(), Get.find()), permanent: true);
   }
 }

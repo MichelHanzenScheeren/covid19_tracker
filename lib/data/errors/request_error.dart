@@ -29,6 +29,7 @@ class RequestError implements Exception {
     switch (dioType) {
       case DioErrorType.CONNECT_TIMEOUT:
       case DioErrorType.SEND_TIMEOUT:
+      case DioErrorType.DEFAULT:
         return RequestErrorType.NETWORK_ERROR;
       case DioErrorType.RECEIVE_TIMEOUT:
         return RequestErrorType.RECEIVE_TIMEOUT;

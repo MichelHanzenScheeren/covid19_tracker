@@ -1,14 +1,16 @@
+import 'dart:async';
+
 import 'package:covid19_tracker_in_flutter/data/errors/request_error.dart';
 import 'package:dio/dio.dart';
 
 class RequestService {
   Future<dynamic> request(String request) async {
     try {
-      final Response response = await Dio().get(request);
+      final Response response =
+          await Dio().get(request).timeout(Duration(seconds: 5));
       return _validateResponse(response);
     } catch (error) {
-      _onError(error);
-      return null;
+      throw _onError(error);
     }
   }
 
@@ -18,9 +20,11 @@ class RequestService {
     return response.data;
   }
 
-  void _onError(error) {
+  RequestError _onError(error) {
     if (error.runtimeType == DioError)
-      throw RequestError(dioErrorType: error.type);
-    throw RequestError();
+      return RequestError(dioErrorType: error.type);
+    if (error.runtimeType == TimeoutException)
+      return RequestError(apiErrorType: RequestErrorType.NETWORK_ERROR);
+    return RequestError();
   }
 }

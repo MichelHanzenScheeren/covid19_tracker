@@ -1,5 +1,5 @@
 import 'package:covid19_tracker_in_flutter/dependencies_injection.dart';
-import 'package:covid19_tracker_in_flutter/presentation/home/presentation_home.dart';
+import 'package:covid19_tracker_in_flutter/presentation/pages/home/presentation_home.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/root_widget.dart';
 
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       title: 'Covid-19 Tracker in Flutter',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.deepPurple,
+        primarySwatch: Colors.red,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: Home(),

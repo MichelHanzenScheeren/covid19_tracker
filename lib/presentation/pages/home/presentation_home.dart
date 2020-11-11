@@ -11,7 +11,6 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        alignment: Alignment.center,
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(
@@ -22,7 +21,7 @@ class Home extends StatelessWidget {
         ),
         child: SingleChildScrollView(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
               TitleHome(
                 title: 'Covid-19',
@@ -30,7 +29,7 @@ class Home extends StatelessWidget {
               ),
               OptionsHome(
                 title: 'Informações',
-                top: 50.0,
+                top: MediaQuery.of(context).size.height * 0.17,
                 down: 10.0,
                 onClick: () => Get.to(Information()),
               ),

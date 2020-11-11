@@ -14,12 +14,12 @@ class UpdatedAt extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          Expanded(child: Divider(color: Colors.grey[400])),
+          Expanded(child: Divider(color: Colors.grey[700])),
           Text(
             " Atualizado ${_formatData()} às ${_formatTime()} ",
             style: GoogleFonts.raleway(
               fontSize: 13,
-              color: Colors.grey[500],
+              color: Colors.grey[700],
             ),
           ),
           Expanded(child: Divider(color: Colors.grey[700])),

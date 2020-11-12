@@ -169,7 +169,7 @@ class MyLineChart extends StatelessWidget {
                   if (number >= myData.length) return '';
                   if (number == 0) return myData[number]['x'];
                   if (number == length - 1) return myData[number]['x'];
-                  if (length > 30 && number > length - 5)
+                  if (length > 90 && number > length - 5)
                     return myData[number]['x'];
                   return '';
                 },
@@ -178,6 +178,8 @@ class MyLineChart extends StatelessWidget {
                 showTitles: true,
                 getTextStyles: (value) => style,
                 getTitles: (value) {
+                  if (myData.length == 0) return '';
+                  if (value == myData[0]['y']) showTitle = false;
                   showTitle = !showTitle;
                   if (showTitle) return formater.format(value);
                   return '';

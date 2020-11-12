@@ -169,7 +169,7 @@ class MyLineChart extends StatelessWidget {
                   if (number >= myData.length) return '';
                   if (number == 0) return myData[number]['x'];
                   if (number == length - 1) return myData[number]['x'];
-                  if (length > 90 && number > length - 5)
+                  if (length > 88 && number > length - 5)
                     return myData[number]['x'];
                   return '';
                 },

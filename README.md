@@ -71,13 +71,20 @@ Para utilizar o aplicativo, algumas ferramentas serão necessárias:
  <table>
   <tr>
    <td align="center">Lista de Países</td>
-   <td align="center">Resumo de um País</td>
+   <td align="center">Resumo do País</td>
+  </tr>
+  <tr>
+   <td><img alt="Lista de Países" src="images/7.jpg" height="500"></td>
+   <td><img alt="Resumo de um País" src="images/8.jpg" height="500"></td>
+  </tr>
+ </table>
+ 
+  <table>
+  <tr>
    <td colspan="2" align="center">Histórico</td>
   </tr>
   <tr>
-   <td><img alt="Lista de Países" src="images/7.jpg" height="400"></td>
-   <td><img alt="Resumo de um País" src="images/8.jpg" height="400"></td>
-   <td><img alt="Histórico" src="images/9.jpg" height="400"></td>
-   <td><img alt="Histórico" src="images/10.jpg" height="400"></td>
+   <td><img alt="Histórico" src="images/9.jpg" height="500"></td>
+   <td><img alt="Histórico" src="images/10.jpg" height="500"></td>
   </tr>
  </table>

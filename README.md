@@ -40,3 +40,44 @@ Para utilizar o aplicativo, algumas ferramentas serão necessárias:
     * A métrica (casos, recuperados ou óbitos);
     * O Período (7 dias, 30 dias, 3 meses, 6 meses ou todo o período);
     * Intervalo de dados (Valor acumulado ou diário);
+
+## Imagens
+<table>
+  <tr>
+   <td align="center">Página Inicial</td>
+   <td align="center">Página de informações</td>
+   <td align="center">Card com informação</td>
+  </tr>
+  <tr>
+   <td><img alt="Página Inicial" src="images/1.jpg" height="500"></td>
+   <td><img alt="Informações" src="images/2.jpg" height="500"></td>
+   <td><img alt="Informações" src="images/3.jpg" height="500"></td>
+  </tr>
+ </table>
+ 
+ <table>
+  <tr>
+   <td align="center">Informações Gerais</td>
+   <td align="center">Gráfico de Barras</td>
+   <td align="center">Opções Disponíveis</td>
+  </tr>
+  <tr>
+   <td><img alt="Informações Gerais" src="images/4.jpg" height="500"></td>
+   <td><img alt="Gráfico de Barras" src="images/5.jpg" height="500"></td>
+   <td><img alt="Opções Disponíveis" src="images/6.jpg" height="500"></td>
+  </tr>
+ </table>
+ 
+ <table>
+  <tr>
+   <td align="center">Lista de Países</td>
+   <td align="center">Resumo de um País</td>
+   <td colspan="2" align="center">Histórico</td>
+  </tr>
+  <tr>
+   <td><img alt="Lista de Países" src="images/7.jpg" height="400"></td>
+   <td><img alt="Resumo de um País" src="images/8.jpg" height="400"></td>
+   <td><img alt="Histórico" src="images/9.jpg" height="400"></td>
+   <td><img alt="Histórico" src="images/10.jpg" height="400"></td>
+  </tr>
+ </table>
